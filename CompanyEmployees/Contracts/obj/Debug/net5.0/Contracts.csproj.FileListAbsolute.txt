@@ -1,0 +1,12 @@
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Contracts\bin\Debug\net5.0\Contracts.deps.json
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Contracts\bin\Debug\net5.0\Contracts.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Contracts\bin\Debug\net5.0\ref\Contracts.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Contracts\bin\Debug\net5.0\Contracts.pdb
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Contracts\obj\Debug\net5.0\Contracts.csproj.AssemblyReference.cache
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Contracts\obj\Debug\net5.0\Contracts.GeneratedMSBuildEditorConfig.editorconfig
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Contracts\obj\Debug\net5.0\Contracts.AssemblyInfoInputs.cache
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Contracts\obj\Debug\net5.0\Contracts.AssemblyInfo.cs
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Contracts\obj\Debug\net5.0\Contracts.csproj.CoreCompileInputs.cache
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Contracts\obj\Debug\net5.0\Contracts.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Contracts\obj\Debug\net5.0\ref\Contracts.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Contracts\obj\Debug\net5.0\Contracts.pdb

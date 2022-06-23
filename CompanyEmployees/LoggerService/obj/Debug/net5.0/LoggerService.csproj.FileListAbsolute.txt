@@ -1,0 +1,15 @@
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\bin\Debug\net5.0\LoggerService.deps.json
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\bin\Debug\net5.0\LoggerService.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\bin\Debug\net5.0\ref\LoggerService.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\bin\Debug\net5.0\LoggerService.pdb
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\bin\Debug\net5.0\Contracts.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\bin\Debug\net5.0\Contracts.pdb
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\obj\Debug\net5.0\LoggerService.csproj.AssemblyReference.cache
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\obj\Debug\net5.0\LoggerService.GeneratedMSBuildEditorConfig.editorconfig
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\obj\Debug\net5.0\LoggerService.AssemblyInfoInputs.cache
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\obj\Debug\net5.0\LoggerService.AssemblyInfo.cs
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\obj\Debug\net5.0\LoggerService.csproj.CoreCompileInputs.cache
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\obj\Debug\net5.0\LoggerService.csproj.CopyComplete
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\obj\Debug\net5.0\LoggerService.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\obj\Debug\net5.0\ref\LoggerService.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\obj\Debug\net5.0\LoggerService.pdb
