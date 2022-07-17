@@ -1,0 +1,5 @@
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\obj\Debug\net5.0\Repository.csproj.AssemblyReference.cache
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\obj\Debug\net5.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\obj\Debug\net5.0\Repository.AssemblyInfoInputs.cache
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\obj\Debug\net5.0\Repository.AssemblyInfo.cs
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\obj\Debug\net5.0\Repository.csproj.CoreCompileInputs.cache
