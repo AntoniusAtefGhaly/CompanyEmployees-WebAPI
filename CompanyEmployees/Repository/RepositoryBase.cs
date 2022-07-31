@@ -19,12 +19,12 @@ namespace Repository
 
         public void Create(T entity)
         {
-            throw new NotImplementedException();
+            RepositoryContext.Set<T>().Add(entity);
         }
 
         public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            RepositoryContext.Set<T>().Remove(entity);
         }
 
         public IQueryable<T> FindAll(bool trackChanges)
@@ -34,12 +34,13 @@ namespace Repository
 
         public IQueryable<T> FindByCondition(System.Linq.Expressions.Expression<Func<T, bool>> expression, bool trackChanges)
         {
-            throw new NotImplementedException();
+            return !trackChanges ? RepositoryContext.Set<T>().Where(expression).AsNoTracking() :
+                RepositoryContext.Set<T>().Where(expression);
         }
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            RepositoryContext.Set<T>().Update(entity);
         }
     }
 }
