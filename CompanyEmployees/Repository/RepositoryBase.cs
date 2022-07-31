@@ -20,11 +20,13 @@ namespace Repository
         public void Create(T entity)
         {
             RepositoryContext.Set<T>().Add(entity);
+            RepositoryContext.SaveChanges();
         }
 
         public void Delete(T entity)
         {
             RepositoryContext.Set<T>().Remove(entity);
+            RepositoryContext.SaveChanges();
         }
 
         public IQueryable<T> FindAll(bool trackChanges)
@@ -34,13 +36,18 @@ namespace Repository
 
         public IQueryable<T> FindByCondition(System.Linq.Expressions.Expression<Func<T, bool>> expression, bool trackChanges)
         {
-            return !trackChanges ? RepositoryContext.Set<T>().Where(expression).AsNoTracking() :
-                RepositoryContext.Set<T>().Where(expression);
+            return !trackChanges ? RepositoryContext.Set<T>().Where(expression).AsNoTracking() : RepositoryContext.Set<T>().Where(expression);
+        }
+
+        public T GetById(string Id, bool trackChanges)
+        {
+            return RepositoryContext.Set<T>().Find(Id);
         }
 
         public void Update(T entity)
         {
             RepositoryContext.Set<T>().Update(entity);
+            RepositoryContext.SaveChanges();
         }
     }
 }

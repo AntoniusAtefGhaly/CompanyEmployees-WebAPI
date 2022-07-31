@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "bMzaJe7w7DPx6TL1cVuYuh/WyQtGXZ0G++sBpkJ/7qhnaUvMhdY6uuzoVdL/3mlWE+C5vBK9P2pvq+QGLJjNHg==",
+=======
+  "dgSpecHash": "AgEIPsIphBq8FuKXC3KWsJkJqJ+hpvWiy8D5Nrgk8/cUXLWcoxF5QqvUHBcTR4bFDby/7GyPuI+ft9ics5zmAQ==",
+>>>>>>> 17d2a014f1dd690359abe12f8cfff7a6226372cc
   "success": true,
   "projectFilePath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Repository\\Repository.csproj",
   "expectedPackageFiles": [
