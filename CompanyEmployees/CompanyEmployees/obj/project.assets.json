@@ -1582,6 +1582,20 @@
         "runtime": {
           "bin/placeholder/LoggerService.dll": {}
         }
+      },
+      "Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Contracts": "1.0.0",
+          "Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Repository.dll": {}
+        }
       }
     }
   },
@@ -5913,14 +5927,19 @@
       "type": "project",
       "path": "../LoggerService/LoggerService.csproj",
       "msbuildProject": "../LoggerService/LoggerService.csproj"
+    },
+    "Repository/1.0.0": {
+      "type": "project",
+      "path": "../Repository/Repository.csproj",
+      "msbuildProject": "../Repository/Repository.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "Entities >= 1.0.0",
       "LoggerService >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.0",
-      "Microsoft.EntityFrameworkCore.Tools >= 5.0.0"
+      "Microsoft.EntityFrameworkCore.Tools >= 5.0.0",
+      "Repository >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5950,11 +5969,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\Entities.csproj": {
-              "projectPath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\Entities.csproj"
-            },
             "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\LoggerService\\LoggerService.csproj": {
               "projectPath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\LoggerService\\LoggerService.csproj"
+            },
+            "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Repository\\Repository.csproj": {
+              "projectPath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Repository\\Repository.csproj"
             }
           }
         }

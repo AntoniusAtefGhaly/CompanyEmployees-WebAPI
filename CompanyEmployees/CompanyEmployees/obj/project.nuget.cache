@@ -1,10 +1,6 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "uEGGGjyN5Rr9KcgbUlyHIxDaElDN3tjKnmMYGGThCl+yCyfWCRNM9qgM3cbXCeQF2bdYaMa4bhUK7Zqeh93GEQ==",
-=======
-  "dgSpecHash": "9qXbT9MgSyDcoNsFbR4tS+lvf/kX6mHphwvJTXrRqP2MmvC0iO5HZqiAd40Juw6KtvMdik7Mxh6r3DGsk8fMLA==",
->>>>>>> 17d2a014f1dd690359abe12f8cfff7a6226372cc
+  "dgSpecHash": "FK8kbTiMVliegwgWdWG4f0fPAp09YnHtARnMy6F5Q7n712UbYshplis69aht6lmQpBlkp76KmaYa9PW7tkPj0w==",
   "success": true,
   "projectFilePath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\CompanyEmployees\\CompanyEmployees.csproj",
   "expectedPackageFiles": [

@@ -4,6 +4,6 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup>
-    <ActiveDebugProfile>CompanyEmployees</ActiveDebugProfile>
+    <ActiveDebugProfile>IIS</ActiveDebugProfile>
   </PropertyGroup>
 </Project>

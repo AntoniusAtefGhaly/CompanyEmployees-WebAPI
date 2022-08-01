@@ -571,8 +571,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\training\\study\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\Entities.csproj": {
-              "projectPath": "D:\\training\\study\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\Entities.csproj"
+            "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\Entities.csproj": {
+              "projectPath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\Entities.csproj"
             }
           }
         }

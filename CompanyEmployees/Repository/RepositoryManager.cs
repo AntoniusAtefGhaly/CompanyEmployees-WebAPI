@@ -13,6 +13,14 @@ namespace Repository
         RepositoryContext repositoryContext;
         ICompanyRepository  _companyRepository;
         IEmployeeRepository _employeeRepository;
+
+        public RepositoryManager(RepositoryContext repositoryContext)
+        {
+            this.repositoryContext = repositoryContext;
+            //_companyRepository = companyRepository;
+            //_employeeRepository = employeeRepository;
+        }
+
         public ICompanyRepository Company {
             get
             {
@@ -30,7 +38,7 @@ namespace Repository
             {
                 if (_employeeRepository== null)
                 {
-                    _companyRepository = new CompanyRepository(repositoryContext);
+                    _employeeRepository = new EmployeeRepository(repositoryContext);
                 }
                 return _employeeRepository;
             }
@@ -38,7 +46,7 @@ namespace Repository
 
         public void Save()
         {
-            throw new NotImplementedException();
+            repositoryContext.SaveChanges();
         }
     }
 }

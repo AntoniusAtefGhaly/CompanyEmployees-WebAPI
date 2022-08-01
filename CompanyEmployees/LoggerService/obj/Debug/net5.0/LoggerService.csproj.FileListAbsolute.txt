@@ -17,7 +17,9 @@ F:\1.NET\ASP_NETCoreWebAPI\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\bin\
 F:\1.NET\ASP_NETCoreWebAPI\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\bin\Debug\net5.0\LoggerService.dll
 F:\1.NET\ASP_NETCoreWebAPI\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\bin\Debug\net5.0\LoggerService.pdb
 F:\1.NET\ASP_NETCoreWebAPI\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\bin\Debug\net5.0\Contracts.dll
+F:\1.NET\ASP_NETCoreWebAPI\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\bin\Debug\net5.0\Entities.dll
 F:\1.NET\ASP_NETCoreWebAPI\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\bin\Debug\net5.0\Contracts.pdb
+F:\1.NET\ASP_NETCoreWebAPI\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\bin\Debug\net5.0\Entities.pdb
 F:\1.NET\ASP_NETCoreWebAPI\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\obj\Debug\net5.0\LoggerService.csproj.AssemblyReference.cache
 F:\1.NET\ASP_NETCoreWebAPI\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\obj\Debug\net5.0\LoggerService.GeneratedMSBuildEditorConfig.editorconfig
 F:\1.NET\ASP_NETCoreWebAPI\ASP_NETCoreWebAPI\CompanyEmployees\LoggerService\obj\Debug\net5.0\LoggerService.AssemblyInfoInputs.cache
