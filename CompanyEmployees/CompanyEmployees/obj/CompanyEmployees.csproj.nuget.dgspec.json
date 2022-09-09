@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\CompanyEmployees\\CompanyEmployees.csproj": {}
+    "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\CompanyEmployees\\CompanyEmployees.csproj": {}
   },
   "projects": {
-    "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\CompanyEmployees\\CompanyEmployees.csproj": {
+    "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\CompanyEmployees\\CompanyEmployees.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\CompanyEmployees\\CompanyEmployees.csproj",
+        "projectUniqueName": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\CompanyEmployees\\CompanyEmployees.csproj",
         "projectName": "CompanyEmployees",
-        "projectPath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\CompanyEmployees\\CompanyEmployees.csproj",
+        "projectPath": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\CompanyEmployees\\CompanyEmployees.csproj",
         "packagesPath": "C:\\Users\\Antonius\\.nuget\\packages\\",
-        "outputPath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\CompanyEmployees\\obj\\",
+        "outputPath": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\CompanyEmployees\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Antonius\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\LoggerService\\LoggerService.csproj": {
-                "projectPath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\LoggerService\\LoggerService.csproj"
+              "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\LoggerService\\LoggerService.csproj": {
+                "projectPath": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\LoggerService\\LoggerService.csproj"
               },
-              "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Repository\\Repository.csproj": {
-                "projectPath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Repository\\Repository.csproj"
+              "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Repository\\Repository.csproj": {
+                "projectPath": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Repository\\Repository.csproj"
               }
             }
           }
@@ -64,7 +64,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -76,18 +77,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Contracts\\Contracts.csproj": {
+    "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Contracts\\Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Contracts\\Contracts.csproj",
+        "projectUniqueName": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Contracts\\Contracts.csproj",
         "projectName": "Contracts",
-        "projectPath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Contracts\\Contracts.csproj",
+        "projectPath": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Contracts\\Contracts.csproj",
         "packagesPath": "C:\\Users\\Antonius\\.nuget\\packages\\",
-        "outputPath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Contracts\\obj\\",
+        "outputPath": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Antonius\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -104,8 +105,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\Entities.csproj": {
-                "projectPath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\Entities.csproj"
+              "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\Entities.csproj": {
+                "projectPath": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\Entities.csproj"
               }
             }
           }
@@ -125,27 +126,42 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\Entities.csproj": {
+    "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\Entities.csproj",
+        "projectUniqueName": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\Entities.csproj",
+        "projectPath": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\Entities.csproj",
         "packagesPath": "C:\\Users\\Antonius\\.nuget\\packages\\",
-        "outputPath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\obj\\",
+        "outputPath": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Antonius\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -185,27 +201,42 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\LoggerService\\LoggerService.csproj": {
+    "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\LoggerService\\LoggerService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\LoggerService\\LoggerService.csproj",
+        "projectUniqueName": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\LoggerService\\LoggerService.csproj",
         "projectName": "LoggerService",
-        "projectPath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\LoggerService\\LoggerService.csproj",
+        "projectPath": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\LoggerService\\LoggerService.csproj",
         "packagesPath": "C:\\Users\\Antonius\\.nuget\\packages\\",
-        "outputPath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\LoggerService\\obj\\",
+        "outputPath": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\LoggerService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Antonius\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -222,8 +253,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Contracts\\Contracts.csproj": {
-                "projectPath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Contracts\\Contracts.csproj"
+              "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Contracts\\Contracts.csproj": {
+                "projectPath": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Contracts\\Contracts.csproj"
               }
             }
           }
@@ -249,27 +280,42 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Repository\\Repository.csproj": {
+    "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Repository\\Repository.csproj",
+        "projectUniqueName": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Repository\\Repository.csproj",
+        "projectPath": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Repository\\Repository.csproj",
         "packagesPath": "C:\\Users\\Antonius\\.nuget\\packages\\",
-        "outputPath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Repository\\obj\\",
+        "outputPath": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Antonius\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -286,11 +332,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Contracts\\Contracts.csproj": {
-                "projectPath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Contracts\\Contracts.csproj"
+              "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Contracts\\Contracts.csproj": {
+                "projectPath": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Contracts\\Contracts.csproj"
               },
-              "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\Entities.csproj": {
-                "projectPath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\Entities.csproj"
+              "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\Entities.csproj": {
+                "projectPath": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Entities\\Entities.csproj"
               }
             }
           }
@@ -310,16 +356,31 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

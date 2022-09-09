@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FK8kbTiMVliegwgWdWG4f0fPAp09YnHtARnMy6F5Q7n712UbYshplis69aht6lmQpBlkp76KmaYa9PW7tkPj0w==",
+  "dgSpecHash": "qJelafvKbpsQb/hELuiKtCH2v1wBHfdoze/pM3WV82OJdXnNSDJYDZzsgHDyB+m++g30Y/R6NMEhBJZe3vR7Bg==",
   "success": true,
-  "projectFilePath": "F:\\1.NET\\ASP_NETCoreWebAPI\\ASP_NETCoreWebAPI\\CompanyEmployees\\CompanyEmployees\\CompanyEmployees.csproj",
+  "projectFilePath": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\CompanyEmployees\\CompanyEmployees.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Antonius\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Antonius\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

@@ -51,7 +51,7 @@ namespace CompanyEmployees
             //services.AddDbContext<RepositoryContext>(
             //options => options.UseSqlServer("server=.; database=CompanyEmployee; Integrated Security=true"));
 
- 
+
             services.ConfigureRepository();
 
         }
@@ -73,11 +73,15 @@ namespace CompanyEmployees
             app.UseCors("CorsPolicy");
             app.UseForwardedHeaders(new ForwardedHeadersOptions { ForwardedHeaders = ForwardedHeaders.All });
 
-            app.UseRouting();
             app.UseAuthorization();
+            app.UseRouting();
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name:"defaut",
+                    pattern:"{controller=Home}/{action=Index}/{id?}"
+                    );
             });
         }
     }
