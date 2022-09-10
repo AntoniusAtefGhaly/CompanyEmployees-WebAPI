@@ -32,6 +32,9 @@ namespace CompanyEmployees.Controllers
         [HttpGet]
         public IActionResult GetCompanies()
         {
+            /*to test global error handler*/
+            throw new Exception("Exception");
+
             try
             {
                 var companies = _repositorymanger.Company.FindAll(false);
