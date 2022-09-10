@@ -1,0 +1,18 @@
+2022-09-09 15:34:00.4055 INFO list of companies returned at 9/9/2022 3:34:00 PM --GetCompanies 
+2022-09-09 15:34:48.5411 INFO list of companies returned at 9/9/2022 3:34:48 PM --GetCompanies 
+2022-09-09 15:34:51.7292 INFO list of companies returned at 9/9/2022 3:34:51 PM --GetCompanies 
+2022-09-09 15:34:52.1544 INFO list of companies returned at 9/9/2022 3:34:52 PM --GetCompanies 
+2022-09-09 15:34:52.5835 INFO list of companies returned at 9/9/2022 3:34:52 PM --GetCompanies 
+2022-09-09 15:34:53.0722 INFO list of companies returned at 9/9/2022 3:34:53 PM --GetCompanies 
+2022-09-09 15:34:53.5511 INFO list of companies returned at 9/9/2022 3:34:53 PM --GetCompanies 
+2022-09-09 15:34:53.9504 INFO list of companies returned at 9/9/2022 3:34:53 PM --GetCompanies 
+2022-09-09 15:34:54.4115 INFO list of companies returned at 9/9/2022 3:34:54 PM --GetCompanies 
+2022-09-09 15:38:05.3470 INFO === ===GetCompanies==list of companies returned
+2022-09-09 15:38:10.3146 INFO === ===GetCompanies==list of companies returned
+2022-09-09 15:38:11.2231 INFO === ===GetCompanies==list of companies returned
+2022-09-09 16:10:16.2116 INFO === GetCompanies==list of companies returned
+2022-09-09 16:10:18.8915 INFO === GetCompanies==list of companies returned
+2022-09-09 16:10:52.7035 INFO === GetCompanies==list of companies returned
+2022-09-09 16:11:13.4862 INFO === GetCompanies==list of companies returned
+2022-09-09 16:11:23.7739 INFO === GetCompanies==list of companies returned
+2022-09-09 16:33:29.1252 INFO === GetCompanies==list of companies returned

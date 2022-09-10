@@ -1,5 +1,7 @@
+using AutoMapper;
 using CompanyEmployees.Extensions;
 using Entities;
+using Entities.DataTransferObjects;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -9,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NLog;
 using System.IO;
+using System.Reflection;
 
 namespace CompanyEmployees
 {
@@ -29,30 +32,17 @@ namespace CompanyEmployees
      options.UseSqlServer(
          Configuration.GetConnectionString("sqlConnection"),
              b => b.MigrationsAssembly(typeof(RepositoryContext).Assembly.FullName)));
-
-
             //ConfigureCors
             services.ConfigureCors();
             services.ConfigureIISIntegration();
             services.ConfigureLoggerService();
             services.AddControllers();
-            //services.ConfigureSqlContext(Configuration);
-            //        services.AddDbContext<ApplicationDbContext>(options =>
-            //options.UseSqlServer(
-            //    Configuration.GetConnectionString("DefaultConnection"),
-            //        b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
-
-
-            //services.AddDbContext<RepositoryContext>(
-            //    options => 
-            //    options.UseSqlServer(
-            //        Configuration.GetConnectionString("sqlConnection"),
-            //            b => b.MigrationsAssembly(typeof(RepositoryContext).Assembly.FullName)));
-            //services.AddDbContext<RepositoryContext>(
-            //options => options.UseSqlServer("server=.; database=CompanyEmployee; Integrated Security=true"));
-
-
             services.ConfigureRepository();
+           // services.AddAutoMapper(typeof(MappingProfile));
+           // var x=System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+            //services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(Assembly.Load("Entities"));
+            //services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

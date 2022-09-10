@@ -43,5 +43,9 @@ namespace CompanyEmployees.Extensions
         {
             services.AddSingleton<IRepositoryManager,RepositoryManager>();
         }
+        //public static void ConfigureAutoMapper (this IServiceCollection services)
+        //{
+        //    services.AddAutoMapper(typeof(Startup));
+        //}
     }
 }

@@ -131,3 +131,9 @@ F:\1.NET\ASP.NET\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\obj\Debug\n
 F:\1.NET\ASP.NET\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\obj\Debug\net5.0\CompanyEmployees.csproj.CopyComplete
 F:\1.NET\ASP.NET\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\obj\Debug\net5.0\CompanyEmployees.genruntimeconfig.cache
 F:\1.NET\ASP.NET\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\obj\Debug\net5.0\ref\CompanyEmployees.dll
+F:\1.NET\ASP.NET\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\AutoMapper.dll
+F:\1.NET\ASP.NET\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+F:\1.NET\ASP.NET\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+F:\1.NET\ASP.NET\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+F:\1.NET\ASP.NET\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+F:\1.NET\ASP.NET\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
