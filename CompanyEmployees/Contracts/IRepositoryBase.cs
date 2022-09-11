@@ -10,7 +10,7 @@ namespace Contracts
     public interface IRepositoryBase<T>
     {
         IQueryable<T> FindAll(bool trackChanges);
-        T GetById(string Id, bool trackChanges);
+        T GetById(Guid Id, bool trackChanges);
         IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression, bool trackChanges);
         void Create(T entity); 
         void Update(T entity);

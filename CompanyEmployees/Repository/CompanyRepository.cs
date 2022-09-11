@@ -22,5 +22,10 @@ namespace Repository
                 .OrderBy(c => c.Name)
                 .ToList();
         }
+
+        public Company GetCompany(Guid CompanyId, bool TrackChanging)
+        {
+            return GetById(CompanyId, TrackChanging);
+        }
     }
 }

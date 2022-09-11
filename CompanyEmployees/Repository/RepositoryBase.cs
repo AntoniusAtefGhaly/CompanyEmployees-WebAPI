@@ -39,7 +39,7 @@ namespace Repository
             return !trackChanges ? RepositoryContext.Set<T>().Where(expression).AsNoTracking() : RepositoryContext.Set<T>().Where(expression);
         }
 
-        public T GetById(string Id, bool trackChanges)
+        public T GetById(Guid Id, bool trackChanges)
         {
             return RepositoryContext.Set<T>().Find(Id);
         }

@@ -33,8 +33,7 @@ namespace CompanyEmployees.Controllers
         public IActionResult GetCompanies()
         {
             /*to test global error handler*/
-            throw new Exception("Exception");
-
+            // throw new Exception("Exception");
             try
             {
                 var companies = _repositorymanger.Company.FindAll(false);
@@ -58,8 +57,23 @@ namespace CompanyEmployees.Controllers
             }
             catch (Exception ex)
             {
-                _loggerManager.LogError($"Something went wrong in the {nameof(GetCompanies)} action {ex.Message}" );
-                return StatusCode(404,"internal server error "+ex.Message);
+                _loggerManager.LogError($"Something went wrong in the {nameof(GetCompanies)} action {ex.Message}");
+                return StatusCode(404, "internal server error " + ex.Message);
+            }
+        }
+        [HttpGet("{id}")]
+        public IActionResult GetCompany(Guid id)
+        {
+            var company=_repositorymanger.Company.GetCompany(id,false);
+            if (company == null)
+            {
+                _loggerManager.LogError($"{nameof(GetCompany)} Company with id: {id} doesn't exist in the database.");
+                return NotFound();
+            }
+            else
+            {
+                var companyDto = _mapper.Map<CompanyDto>(company);
+                return Ok(companyDto);
             }
         }
     }
