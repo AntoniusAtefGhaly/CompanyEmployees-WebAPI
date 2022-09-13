@@ -1,1 +1,20 @@
-2022-09-12 00:04:23.7952 ERROR === GetEmployee employee with id 86dba8c0-d178-41e7-938c-ed49778fb52b not found
+2022-09-12 10:11:37.2688 INFO === GetCompanies==list of companies returned
+2022-09-12 10:11:53.7268 ERROR === Something went wrong in the GetCompanies action Error mapping types.
+
+Mapping types:
+EntityQueryable`1 -> IEnumerable`1
+Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Entities.Models.Company, Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.IEnumerable`1[[Entities.DataTransferObjects.CompanyDto, Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+2022-09-12 10:14:57.8780 INFO === GetCompanies==list of companies returned
+2022-09-12 10:15:01.0560 ERROR === Something went wrong in the GetCompanies action Error mapping types.
+
+Mapping types:
+EntityQueryable`1 -> IEnumerable`1
+Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Entities.Models.Company, Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.IEnumerable`1[[Entities.DataTransferObjects.CompanyDto, Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+2022-09-12 10:18:13.9250 INFO === GetCompanies==list of companies returned
+2022-09-12 10:18:57.0709 ERROR === Something went wrong in the GetCompanies action Error mapping types.
+
+Mapping types:
+EntityQueryable`1 -> IEnumerable`1
+Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[[Entities.Models.Company, Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.IEnumerable`1[[Entities.DataTransferObjects.CompanyDto, Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+2022-09-12 10:19:27.2546 INFO === GetCompanies==list of companies returned
+2022-09-12 10:52:43.5660 INFO === GetCompanies==list of companies returned

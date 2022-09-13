@@ -41,8 +41,14 @@ namespace CompanyEmployees.Extensions
         }
         public static void ConfigureRepository(this IServiceCollection services)
         {
-            services.AddSingleton<IRepositoryManager,RepositoryManager>();
+            services.AddScoped<IRepositoryManager,RepositoryManager>();
         }
+
+        public static IMvcBuilder AddCustomCSVFormatter(this IMvcBuilder builder) {
+            return builder.AddMvcOptions(config => config.OutputFormatters.Add(new
+CsvOutputFormatter()));
+        }
+
         //public static void ConfigureAutoMapper (this IServiceCollection services)
         //{
         //    services.AddAutoMapper(typeof(Startup));

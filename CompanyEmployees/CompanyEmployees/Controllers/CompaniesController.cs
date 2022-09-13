@@ -58,7 +58,7 @@ namespace CompanyEmployees.Controllers
             catch (Exception ex)
             {
                 _loggerManager.LogError($"Something went wrong in the {nameof(GetCompanies)} action {ex.Message}");
-                return StatusCode(404, "internal server error " + ex.Message);
+                return StatusCode(500, "internal server error " + ex.Message);
             }
         }
         [HttpGet("{id}")]

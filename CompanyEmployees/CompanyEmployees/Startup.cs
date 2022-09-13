@@ -29,21 +29,35 @@ namespace CompanyEmployees
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<RepositoryContext>(options =>
-     options.UseSqlServer(
-         Configuration.GetConnectionString("sqlConnection"),
-             b => b.MigrationsAssembly(typeof(RepositoryContext).Assembly.FullName)));
+            //services.AddDbContext<RepositoryContext>(options =>
+     //options.UseSqlServer(
+     //    Configuration.GetConnectionString("sqlConnection"),
+     //        b => b.MigrationsAssembly(typeof(RepositoryContext).Assembly.FullName)));
+
+
             //ConfigureCors
             services.ConfigureCors();
             services.ConfigureIISIntegration();
             services.ConfigureLoggerService();
             services.AddControllers();
             services.ConfigureRepository();
+            services.ConfigureSqlContext(Configuration);
            // services.AddAutoMapper(typeof(MappingProfile));
            // var x=System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
-            //services.AddAutoMapper(typeof(Startup));
+           //services.AddAutoMapper(typeof(Startup));
             services.AddAutoMapper(Assembly.Load("Entities"));
             //services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            //accept header
+
+            services.AddControllers(config=>
+            {
+                config.RespectBrowserAcceptHeader = true;
+                config.ReturnHttpNotAcceptable = true;
+            }
+            ).AddXmlDataContractSerializerFormatters()
+            .AddCustomCSVFormatter();
+           
 
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -75,6 +89,8 @@ namespace CompanyEmployees
                     pattern:"{controller=Home}/{action=Index}/{id?}"
                     );
             });
+            
+
         }
     }
 }
