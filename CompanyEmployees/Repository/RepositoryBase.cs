@@ -20,13 +20,17 @@ namespace Repository
         public void Create(T entity)
         {
             RepositoryContext.Set<T>().Add(entity);
-            RepositoryContext.SaveChanges();
+            //RepositoryContext.SaveChanges();
         }
-
+        public void CreateCollection(IEnumerable<T> entities)
+        {
+            RepositoryContext.Set<T>().AddRange(entities);
+            //RepositoryContext.SaveChanges();
+        }
         public void Delete(T entity)
         {
             RepositoryContext.Set<T>().Remove(entity);
-            RepositoryContext.SaveChanges();
+            //RepositoryContext.SaveChanges();
         }
 
         public IQueryable<T> FindAll(bool trackChanges)
@@ -47,7 +51,7 @@ namespace Repository
         public void Update(T entity)
         {
             RepositoryContext.Set<T>().Update(entity);
-            RepositoryContext.SaveChanges();
+            //RepositoryContext.SaveChanges();
         }
     }
 }

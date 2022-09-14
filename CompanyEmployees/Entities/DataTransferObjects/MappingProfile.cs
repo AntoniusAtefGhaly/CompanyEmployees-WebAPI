@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Entities.DataTransferObjects;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,13 @@ namespace Entities.DataTransferObjects
 
             // CreateMap<Company, CompanyDto>()
             //.ForMember(c => c.FullAddress,opt => opt.MapFrom(x => string.Join(' ', x.Address, x.Country)));
+            CreateMap<CompanyForCreationDto, Company>().ForMember(c => c.Id, opt => opt.MapFrom(x=> System.Guid.NewGuid().ToString()));
+
+
             CreateMap<Employee, EmployeeDto>();
+            //CreateMap<EmployeeForCreationDto, Employee>();
+            CreateMap<EmployeeForCreationDto, Employee>().ForMember(e => e.Id, opt => opt.MapFrom(x => System.Guid.NewGuid().ToString()));
+
         }
     }
 }
