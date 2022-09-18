@@ -15,7 +15,7 @@ namespace CompanyEmployees.Controllers
     [ApiController]
     public class CompaniesController : ControllerBase
     {
-        private readonly IRepositoryManager _repositorymanger;
+        private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _loggerManager;
         private readonly IMapper _mapper;
 
@@ -24,7 +24,7 @@ namespace CompanyEmployees.Controllers
             IMapper mapper
             )
         {
-            _repositorymanger = repositorymanger;
+            _repository = repositorymanger;
             _loggerManager = loggerManager;
             _mapper = mapper;
         }
@@ -36,7 +36,7 @@ namespace CompanyEmployees.Controllers
             // throw new Exception("Exception");
             try
             {
-                var companies = _repositorymanger.Company.FindAll(false);
+                var companies = _repository.Company.FindAll(false);
                 _loggerManager.LogInfo($"{nameof(GetCompanies)}==list of companies returned");
                 //var companiesDto = companies.Select(c=>
                 //    new 
@@ -65,7 +65,7 @@ namespace CompanyEmployees.Controllers
         [HttpGet("{id}", Name = "CompanyById")]
         public IActionResult GetCompany(Guid id)
         {
-            var company = _repositorymanger.Company.GetCompany(id, false);
+            var company = _repository.Company.GetCompany(id, false);
             if (company == null)
             {
                 _loggerManager.LogError($"{nameof(GetCompany)} Company with id: {id} doesn't exist in the database.");
@@ -88,8 +88,8 @@ namespace CompanyEmployees.Controllers
             }
             var company = _mapper.Map<Company>(companyDto);
 
-            _repositorymanger.Company.CreateCompany(company);
-            _repositorymanger.Save();
+            _repository.Company.CreateCompany(company);
+            _repository.Save();
 
             var companyToReturn = _mapper.Map<CompanyDto>(company);
             return CreatedAtRoute("CompanyById", new { id = companyToReturn.Id }, companyToReturn);
@@ -103,7 +103,7 @@ namespace CompanyEmployees.Controllers
                 _loggerManager.LogError($"{nameof(GetCompanyCollection)}Parameter ids is null");
                 return BadRequest("Parameter ids is null");
             }
-            var companies = _repositorymanger.Company.GetCompaniesByIds(ids, false);
+            var companies = _repository.Company.GetCompaniesByIds(ids, false);
             if (companies.Count() != ids.Count())
             {
                 _loggerManager.LogError($"{nameof(GetCompanyCollection)} some companies IDs not valid");
@@ -123,11 +123,24 @@ namespace CompanyEmployees.Controllers
                 return BadRequest("CompanyForCreationDto list of object is null");
             }
             var companiesEntities = _mapper.Map <IEnumerable<Company>>(companiesDto);
-            _repositorymanger.Company.CreateCompanyCollection(companiesEntities);
-            _repositorymanger.Save();
+            _repository.Company.CreateCompanyCollection(companiesEntities);
+            _repository.Save();
             var companiesToReturn = _mapper.Map<IEnumerable<CompanyDto>>(companiesEntities);
             var ids = string.Join(',', companiesToReturn.Select(c => c.Id));
             return CreatedAtRoute("GetCompanyCollection",new { ids }, companiesToReturn);
+        }
+        [HttpDelete("{id}")]
+        public IActionResult Delete(Guid id)
+        {
+            var company=_repository.Company.GetCompany(id,false);
+            if (company == null)
+            {
+                _loggerManager.LogError($"{nameof(GetCompany)} Company with id: {id} doesn't exist in the database.");
+                return NotFound($"Company with id: { id} doesn't exist in the database.");
+            }
+            _repository.Company.Delete(company);
+            _repository.Save();
+            return NoContent();
         }
     }
 }

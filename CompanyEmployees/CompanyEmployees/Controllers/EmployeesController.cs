@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Contracts;
 using Entities.DataTransferObjects;
-using Entities.DataTransferObjects;
 using Entities.Models;
 using LoggerService;
 using Microsoft.AspNetCore.Http;
@@ -83,6 +82,27 @@ namespace CompanyEmployees.Controllers
                 companyId = employeeEntity.CompanyId,
                 employeeId = employeeEntity.Id
             }, returnEmployee);
+        }
+        
+        [HttpDelete("{id}")]
+        public IActionResult Delete(Guid id,Guid companyId)
+        {
+            var company = _repository.Company.GetCompany(companyId,false);
+            if(company == null)
+            {
+                _logger.LogError($"{nameof(Delete)} company with id = {id} doesnot exist in database");
+                return NotFound($"company with id = {id} doesnot exist in database");
+            }
+            var employee = _repository.Employee.GetEmployee(companyId, id, false);
+            if (employee == null)
+            {
+                _logger.LogError($"{nameof(Delete)} employee with id = {id} doesnot exist in database");
+                return NotFound($"employee with id = {id} doesnot exist in database");
+            }
+            _repository.Employee.DeleteEmployee(employee);
+            _repository.Save();
+            return NoContent();
+
         }
     }
 }

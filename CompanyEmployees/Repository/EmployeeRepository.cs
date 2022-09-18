@@ -24,6 +24,11 @@ namespace Repository
             Create(employee);
         }
 
+        public void DeleteEmployee(Employee employee)
+        {
+            Delete(employee);
+        }
+
         public Employee GetEmployee(Guid CompanyId, Guid EmployeeID, bool trackChanges)
         {
             return FindByCondition(
