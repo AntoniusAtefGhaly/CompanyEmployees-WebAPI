@@ -21,6 +21,7 @@ namespace CompanyEmployees.Migrations
 
             modelBuilder.Entity("Entities.Models.Company", b =>
                 {
+                    
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
