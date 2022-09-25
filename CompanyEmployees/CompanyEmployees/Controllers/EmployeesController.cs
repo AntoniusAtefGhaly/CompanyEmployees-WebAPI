@@ -84,5 +84,26 @@ namespace CompanyEmployees.Controllers
                 employeeId = employeeEntity.Id
             }, returnEmployee);
         }
+        [HttpPost("collection")]
+        public IActionResult CreateEmployeeCollection([FromBody] IEnumerable<EmployeeForCreationDto> employees, Guid companyId)
+        {
+            if (employees == null)
+            {
+                _logger.LogError($"{nameof(CreateEmployeeCollection)} user request have employees object is null");
+                return BadRequest("employees object is null");
+            }
+            var company = _repository.Company.GetCompany(companyId, false);
+            if (company == null)
+            {
+                _logger.LogError($"{nameof(CreateEmployeeCollection)} the company with id {companyId} doesnot exsist in database");
+                return NotFound($"the company with id {companyId} doesnot exsist in database");
+            }
+            var employeesEntity = _mapper.Map<IEnumerable<Employee>>(employees);
+            _repository.Employee.CreateEmployeeCollection(employeesEntity,companyId);
+            _repository.Save();
+            var employeesReturned = _mapper.Map<IEnumerable<EmployeeDto>>(employeesEntity);
+            return Ok(employeesReturned);
+            //return CreatedAtRoute("",);
+        }
     }
 }

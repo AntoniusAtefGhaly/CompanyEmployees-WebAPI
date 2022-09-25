@@ -37,5 +37,14 @@ namespace Repository
                 e => e.CompanyId == CompanyId, trackChanges)
                             .OrderBy(e => e.Name);
         }
+        public void CreateEmployeeCollection(IEnumerable<Employee> employees, Guid CompanyId)
+        {
+            foreach(var  emp in employees)
+            {
+                emp.CompanyId = CompanyId;
+            }
+             CreateCollection(employees);
+        }
+
     }
 }
