@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -45,9 +46,14 @@ namespace Repository
 
         public T GetById(Guid Id, bool trackChanges)
         {
-            return RepositoryContext.Set<T>().Find(Id);
+            return RepositoryContext.Set<T>()
+                .Find(Id);
         }
-
+        public  T GetFirstInclude(Expression<Func<T, bool>> expression, Expression<Func<T, object>> includeExpression,bool trackChanges )
+        {
+            return !trackChanges ? RepositoryContext.Set<T>().Where(expression).Include(includeExpression).AsNoTracking().FirstOrDefault() :
+             RepositoryContext.Set<T>().Where(expression).Include(includeExpression).AsTracking().FirstOrDefault();
+        }
         public void Update(T entity)
         {
             RepositoryContext.Set<T>().Update(entity);

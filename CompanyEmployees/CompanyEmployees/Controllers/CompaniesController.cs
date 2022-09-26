@@ -17,7 +17,7 @@ namespace CompanyEmployees.Controllers
     public class CompaniesController : ControllerBase
     {
         private readonly IRepositoryManager _repository;
-        private readonly ILoggerManager _loggerManager;
+        private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
 
         public CompaniesController(IRepositoryManager repositorymanger,
@@ -26,7 +26,7 @@ namespace CompanyEmployees.Controllers
             )
         {
             _repository = repositorymanger;
-            _loggerManager = loggerManager;
+            _logger = loggerManager;
             _mapper = mapper;
         }
 
@@ -38,7 +38,7 @@ namespace CompanyEmployees.Controllers
             try
             {
                 var companies = _repository.Company.FindAll(false);
-                _loggerManager.LogInfo($"{nameof(GetCompanies)}==list of companies returned");
+                _logger.LogInfo($"{nameof(GetCompanies)}==list of companies returned");
                 //var companiesDto = companies.Select(c=>
                 //    new 
                 //    {
@@ -58,7 +58,7 @@ namespace CompanyEmployees.Controllers
             }
             catch (Exception ex)
             {
-                _loggerManager.LogError($"Something went wrong in the {nameof(GetCompanies)} action {ex.Message}");
+                _logger.LogError($"Something went wrong in the {nameof(GetCompanies)} action {ex.Message}");
                 return StatusCode(500, "internal server error " + ex.Message);
             }
         }
@@ -69,7 +69,7 @@ namespace CompanyEmployees.Controllers
             var company = _repository.Company.GetCompany(id, false);
             if (company == null)
             {
-                _loggerManager.LogError($"{nameof(GetCompany)} Company with id: {id} doesn't exist in the database.");
+                _logger.LogError($"{nameof(GetCompany)} Company with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
             else
@@ -84,7 +84,7 @@ namespace CompanyEmployees.Controllers
         {
             if (companyDto == null)
             {
-                _loggerManager.LogError($"{nameof(Create)} CompanyForCreationDto object sent from client is null.");
+                _logger.LogError($"{nameof(Create)} CompanyForCreationDto object sent from client is null.");
                 return BadRequest("CompanyForCreationDto   is null");
             }
             var company = _mapper.Map<Company>(companyDto);
@@ -101,13 +101,13 @@ namespace CompanyEmployees.Controllers
         {
             if (ids == null)
             {
-                _loggerManager.LogError($"{nameof(GetCompanyCollection)}Parameter ids is null");
+                _logger.LogError($"{nameof(GetCompanyCollection)}Parameter ids is null");
                 return BadRequest("Parameter ids is null");
             }
             var companies = _repository.Company.GetCompaniesByIds(ids, false);
             if (companies.Count() != ids.Count())
             {
-                _loggerManager.LogError($"{nameof(GetCompanyCollection)} some companies IDs not valid");
+                _logger.LogError($"{nameof(GetCompanyCollection)} some companies IDs not valid");
                 return NotFound();
             }
 
@@ -120,7 +120,7 @@ namespace CompanyEmployees.Controllers
         {
             if (companiesDto == null)
             {
-                _loggerManager.LogError($"{nameof(CreateCompanyCollection)} user request have CompanyForCreationDto list of object is null");
+                _logger.LogError($"{nameof(CreateCompanyCollection)} user request have CompanyForCreationDto list of object is null");
                 return BadRequest("CompanyForCreationDto list of object is null");
             }
             var companiesEntities = _mapper.Map <IEnumerable<Company>>(companiesDto);
@@ -136,12 +136,35 @@ namespace CompanyEmployees.Controllers
             var company=_repository.Company.GetCompany(id,false);
             if (company == null)
             {
-                _loggerManager.LogError($"{nameof(GetCompany)} Company with id: {id} doesn't exist in the database.");
+                _logger.LogError($"{nameof(GetCompany)} Company with id: {id} doesn't exist in the database.");
                 return NotFound($"Company with id: { id} doesn't exist in the database.");
             }
             _repository.Company.Delete(company);
             _repository.Save();
             return NoContent();
+        }
+        [HttpPut("{id}")]
+        public IActionResult UpdateCompany([FromBody] CompanyForUpdateDto company, Guid id)
+        {
+            if (company == null)
+            {
+                _logger.LogError($"{nameof(UpdateCompany)}  the Company object is null from user request");
+                return BadRequest("CompanyForCreationDto object is null");
+            }
+
+            var CompanyEntity = _repository.Company.GetCompanyIncludeEmployees(id , true);
+            if (CompanyEntity == null)
+            {
+                _logger.LogError($"{nameof(UpdateCompany)} Company with id = {id} doesnot exist in database");
+                return NotFound($"Company with id = {id} doesnot exist in database");
+            }
+            _mapper.Map(company, CompanyEntity);
+            //foreach (var e in CompanyEntity.Employees)
+            //{
+            //    e.CompanyId = id;
+            //}
+            _repository.Save();
+            return Ok(company);
         }
     }
 }

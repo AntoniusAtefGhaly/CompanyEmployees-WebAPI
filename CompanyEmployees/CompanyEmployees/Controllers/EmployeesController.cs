@@ -46,7 +46,7 @@ namespace CompanyEmployees.Controllers
                 _logger.LogError($"{nameof(GetEmployee)} company with id {companyId} not found");
                 return NotFound();
             }
-            var employee = _repository.Employee.GetEmployee(companyId, employeeId, false);
+            var employee = _repository.Employee.GetEmployee(companyId, employeeId, true);
             if (employee == null)
             {
                 _logger.LogError($"{nameof(GetEmployee)} employee with id {employeeId} not found");
@@ -124,6 +124,30 @@ namespace CompanyEmployees.Controllers
             var employeesReturned = _mapper.Map<IEnumerable<EmployeeDto>>(employeesEntity);
             return Ok(employeesReturned);
             //return CreatedAtRoute("",);
+        }
+        [HttpPut("{id}")]
+        public IActionResult UpdateEmployee([FromBody] EmployeeForUpdateDto employee,Guid companyId, Guid  id)
+        {
+            if (employee == null)
+            {
+                _logger.LogError($"{nameof(UpdateEmployee)}  the employee object is null from user request");
+                return BadRequest("EmployeeForCreationDto object is null");
+            }
+            var company = _repository.Company.GetCompany(companyId, false);
+            if (company == null)
+            {
+                _logger.LogError($"{nameof(UpdateEmployee)} the company with id {companyId} doesnot exsist in database");
+                return NotFound($"the company with id {companyId} doesnot exsist in database");
+            }
+            var employeeEntity = _repository.Employee.GetEmployee(companyId, id, true);
+            if (employeeEntity == null)
+            {
+                _logger.LogError($"{nameof(UpdateEmployee)} employee with id = {id} doesnot exist in database");
+                return NotFound($"employee with id = {id} doesnot exist in database");
+            }
+           _mapper.Map(employee, employeeEntity);
+            _repository.Save();
+            return Ok(employee);
         }
     }
 }

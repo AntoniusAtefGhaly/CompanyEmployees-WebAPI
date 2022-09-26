@@ -17,7 +17,6 @@ namespace Repository
         {
         
         }
-
         public void CreateEmployee(Employee employee, Guid CompanyId)
         {
             employee.CompanyId = CompanyId;
@@ -51,5 +50,10 @@ namespace Repository
              CreateCollection(employees);
         }
 
+        public void UpdateEmployee(Employee employee, Guid companyId)
+        {
+            employee.CompanyId = companyId;
+            Update(employee);
+        }
     }
 }

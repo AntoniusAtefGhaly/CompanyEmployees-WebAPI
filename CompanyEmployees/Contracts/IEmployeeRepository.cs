@@ -13,7 +13,7 @@ namespace Contracts
         public Employee GetEmployee(Guid CompanyId,Guid EmployeeID, bool trackChanges);
         public void CreateEmployee(Employee employee, Guid CompanyId);
         public void DeleteEmployee(Employee employee);
-  
+        public void UpdateEmployee(Employee employee, Guid companyId);
         public void CreateEmployeeCollection(IEnumerable<Employee> employees, Guid CompanyId);
     }
 }

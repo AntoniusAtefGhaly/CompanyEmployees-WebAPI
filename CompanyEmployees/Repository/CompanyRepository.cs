@@ -48,5 +48,10 @@ namespace Repository
         {
             return GetById(CompanyId, TrackChanging);
         }
+
+        public Company GetCompanyIncludeEmployees(Guid CompanyId, bool TrackChanging)
+        {
+            return GetFirstInclude(e=>e.Id==CompanyId,c=>c.Employees, TrackChanging);
+        }
     }
 }

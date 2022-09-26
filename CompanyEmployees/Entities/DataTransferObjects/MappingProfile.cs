@@ -28,7 +28,9 @@ namespace Entities.DataTransferObjects
             CreateMap<Employee, EmployeeDto>();
             //CreateMap<EmployeeForCreationDto, Employee>();
             CreateMap<EmployeeForCreationDto, Employee>().ForMember(e => e.Id, opt => opt.MapFrom(x => System.Guid.NewGuid().ToString()));
-
+            CreateMap<EmployeeForUpdateDto, Employee>();
+            CreateMap<CompanyForUpdateDto, Company>();
+            
         }
     }
 }
