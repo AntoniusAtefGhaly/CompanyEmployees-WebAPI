@@ -4,6 +4,7 @@ using Entities.DataTransferObjects;
 using Entities.Models;
 using LoggerService;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -149,5 +150,33 @@ namespace CompanyEmployees.Controllers
             _repository.Save();
             return Ok(employee);
         }
+
+        [HttpPatch("{id}")]
+        public IActionResult PartiallyUpdateEmployeeForCompany([FromBody]  JsonPatchDocument<EmployeeForUpdateDto> patchDocument, Guid companyId, Guid id)
+        {
+            if (patchDocument == null)
+            {
+                _logger.LogError($"{nameof(PartiallyUpdateEmployeeForCompany)}  the patchDocument object is null from user request");
+                return BadRequest("patchDocument object is null");
+            }
+            var company = _repository.Company.GetCompany(companyId, false);
+            if (company == null)
+            {
+                _logger.LogError($"{nameof(PartiallyUpdateEmployeeForCompany)} the company with id {companyId} doesnot exsist in database");
+                return NotFound($"the company with id {companyId} doesnot exsist in database");
+            }
+            var employeeEntity = _repository.Employee.GetEmployee(companyId, id, true);
+            if (employeeEntity == null)
+            {
+                _logger.LogError($"{nameof(PartiallyUpdateEmployeeForCompany)} employee with id = {id} doesnot exist in database");
+                return NotFound($"employee with id = {id} doesnot exist in database");
+            }
+            var employeeToPatch = _mapper.Map<EmployeeForUpdateDto>(employeeEntity);
+            patchDocument.ApplyTo(employeeToPatch);
+            _mapper.Map(employeeToPatch, employeeEntity);
+            _repository.Save();
+            return NoContent();
+        }
+
     }
 }

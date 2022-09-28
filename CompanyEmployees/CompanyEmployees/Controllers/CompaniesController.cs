@@ -158,13 +158,14 @@ namespace CompanyEmployees.Controllers
                 _logger.LogError($"{nameof(UpdateCompany)} Company with id = {id} doesnot exist in database");
                 return NotFound($"Company with id = {id} doesnot exist in database");
             }
+           
             _mapper.Map(company, CompanyEntity);
             //foreach (var e in CompanyEntity.Employees)
             //{
             //    e.CompanyId = id;
             //}
             _repository.Save();
-            return Ok(company);
+            return NoContent( );
         }
     }
 }
