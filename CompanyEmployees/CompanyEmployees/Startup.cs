@@ -58,7 +58,11 @@ namespace CompanyEmployees
             ).AddNewtonsoftJson()
 .AddXmlDataContractSerializerFormatters()
             .AddCustomCSVFormatter();
-           
+
+            services.Configure<Microsoft.AspNetCore.Mvc.ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
 
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -90,7 +94,6 @@ namespace CompanyEmployees
                     pattern:"{controller=Home}/{action=Index}/{id?}"
                     );
             });
-            
 
         }
     }

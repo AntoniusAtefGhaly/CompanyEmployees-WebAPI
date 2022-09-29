@@ -57,6 +57,7 @@ namespace CompanyEmployees.Controllers
             return Ok(employyDto);
         }
         [HttpPost]
+        
         public IActionResult Create([FromBody] EmployeeForCreationDto employee, Guid companyId)
         {
             if (employee == null)
@@ -67,10 +68,14 @@ namespace CompanyEmployees.Controllers
             var company = _repository.Company.GetCompany(companyId, false);
             if (company == null)
             {
-                _logger.LogError($"{nameof(GetEmployee)} company with id {companyId} doesnot exsist in database ");
+                _logger.LogError($"{nameof(Create)} company with id {companyId} doesnot exsist in database ");
                 return NotFound("company with id { companyId}    not found in database");
             }
-
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError($"{nameof(Create)} nvalid model state for the EmployeeForCreationDto object");
+                return UnprocessableEntity(ModelState);
+            }
             var employeeEntity = _mapper.Map<Employee>(employee);
 
             _repository.Employee.CreateEmployee(employeeEntity, companyId);
@@ -140,6 +145,11 @@ namespace CompanyEmployees.Controllers
                 _logger.LogError($"{nameof(UpdateEmployee)} the company with id {companyId} doesnot exsist in database");
                 return NotFound($"the company with id {companyId} doesnot exsist in database");
             }
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError($"{nameof(Create)} nvalid model state for the EmployeeForCreationDto object");
+                return UnprocessableEntity(ModelState);
+            }
             var employeeEntity = _repository.Employee.GetEmployee(companyId, id, true);
             if (employeeEntity == null)
             {
@@ -172,8 +182,14 @@ namespace CompanyEmployees.Controllers
                 return NotFound($"employee with id = {id} doesnot exist in database");
             }
             var employeeToPatch = _mapper.Map<EmployeeForUpdateDto>(employeeEntity);
-            patchDocument.ApplyTo(employeeToPatch);
-            _mapper.Map(employeeToPatch, employeeEntity);
+            patchDocument.ApplyTo(employeeToPatch,ModelState);
+           TryValidateModel(employeeToPatch);
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the patch document");
+                return UnprocessableEntity(ModelState);
+            }
+            _mapper.Map(employeeToPatch, employeeEntity); 
             _repository.Save();
             return NoContent();
         }
