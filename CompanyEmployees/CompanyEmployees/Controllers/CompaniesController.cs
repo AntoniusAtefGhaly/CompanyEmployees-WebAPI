@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using static System.Collections.Specialized.BitVector32;
 
 namespace CompanyEmployees.Controllers
@@ -31,13 +32,13 @@ namespace CompanyEmployees.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetCompanies()
+        public async Task<IActionResult> GetCompanies()
         {
             /*to test global error handler*/
             // throw new Exception("Exception");
             try
             {
-                var companies = _repository.Company.FindAll(false);
+                var companies = await _repository.Company.GetAllCompaniesAsync(false);
                 _logger.LogInfo($"{nameof(GetCompanies)}==list of companies returned");
                 //var companiesDto = companies.Select(c=>
                 //    new 
@@ -62,11 +63,11 @@ namespace CompanyEmployees.Controllers
                 return StatusCode(500, "internal server error " + ex.Message);
             }
         }
-        
+
         [HttpGet("{id}", Name = "CompanyById")]
-        public IActionResult GetCompany(Guid id)
+        public async Task<IActionResult> GetCompany(Guid id)
         {
-            var company = _repository.Company.GetCompany(id, false);
+            var company = await _repository.Company.GetCompanyAsync(id, false);
             if (company == null)
             {
                 _logger.LogError($"{nameof(GetCompany)} Company with id: {id} doesn't exist in the database.");
@@ -78,33 +79,33 @@ namespace CompanyEmployees.Controllers
                 return Ok(companyDto);
             }
         }
-        
+
         [HttpPost]
-        public IActionResult Create([FromBody] CompanyForCreationDto companyDto)
+        public async Task<IActionResult> CreateAsync([FromBody] CompanyForCreationDto companyDto)
         {
             if (companyDto == null)
             {
-                _logger.LogError($"{nameof(Create)} CompanyForCreationDto object sent from client is null.");
+                _logger.LogError($"{nameof(CreateAsync)} CompanyForCreationDto object sent from client is null.");
                 return BadRequest("CompanyForCreationDto   is null");
             }
             var company = _mapper.Map<Company>(companyDto);
 
             _repository.Company.CreateCompany(company);
-            _repository.Save();
+            await _repository.SaveAsync();
 
             var companyToReturn = _mapper.Map<CompanyDto>(company);
             return CreatedAtRoute("CompanyById", new { id = companyToReturn.Id }, companyToReturn);
         }
-        
+
         [HttpGet("collection/{ids}", Name = "GetCompanyCollection")]
-        public IActionResult GetCompanyCollection([ModelBinder(BinderType =typeof(ArrayModelBinder))]IEnumerable<Guid> ids)
+        public async Task<IActionResult> GetCompanyCollection([ModelBinder(BinderType = typeof(ArrayModelBinder))] IEnumerable<Guid> ids)
         {
             if (ids == null)
             {
                 _logger.LogError($"{nameof(GetCompanyCollection)}Parameter ids is null");
                 return BadRequest("Parameter ids is null");
             }
-            var companies = _repository.Company.GetCompaniesByIds(ids, false);
+            var companies =await _repository.Company.GetCompaniesByIdsAsync(ids, false);
             if (companies.Count() != ids.Count())
             {
                 _logger.LogError($"{nameof(GetCompanyCollection)} some companies IDs not valid");
@@ -116,56 +117,56 @@ namespace CompanyEmployees.Controllers
         }
 
         [HttpPost("collection")]
-        public IActionResult CreateCompanyCollection(IEnumerable<CompanyForCreationDto> companiesDto)
+        public async Task<IActionResult> CreateCompanyCollectionAsync(IEnumerable<CompanyForCreationDto> companiesDto)
         {
             if (companiesDto == null)
             {
-                _logger.LogError($"{nameof(CreateCompanyCollection)} user request have CompanyForCreationDto list of object is null");
+                _logger.LogError($"{nameof(CreateCompanyCollectionAsync)} user request have CompanyForCreationDto list of object is null");
                 return BadRequest("CompanyForCreationDto list of object is null");
             }
-            var companiesEntities = _mapper.Map <IEnumerable<Company>>(companiesDto);
+            var companiesEntities = _mapper.Map<IEnumerable<Company>>(companiesDto);
             _repository.Company.CreateCompanyCollection(companiesEntities);
-            _repository.Save();
+            await _repository.SaveAsync();
             var companiesToReturn = _mapper.Map<IEnumerable<CompanyDto>>(companiesEntities);
             var ids = string.Join(',', companiesToReturn.Select(c => c.Id));
-            return CreatedAtRoute("GetCompanyCollection",new { ids }, companiesToReturn);
+            return CreatedAtRoute("GetCompanyCollection", new { ids }, companiesToReturn);
         }
         [HttpDelete("{id}")]
-        public IActionResult Delete(Guid id)
+        public async Task<IActionResult> DeleteAsync(Guid id)
         {
-            var company=_repository.Company.GetCompany(id,false);
+            var company = _repository.Company.GetCompany(id, false);
             if (company == null)
             {
                 _logger.LogError($"{nameof(GetCompany)} Company with id: {id} doesn't exist in the database.");
                 return NotFound($"Company with id: { id} doesn't exist in the database.");
             }
             _repository.Company.Delete(company);
-            _repository.Save();
+            await _repository.SaveAsync();
             return NoContent();
         }
         [HttpPut("{id}")]
-        public IActionResult UpdateCompany([FromBody] CompanyForUpdateDto company, Guid id)
+        public async Task<IActionResult> UpdateCompanyAsync([FromBody] CompanyForUpdateDto company, Guid id)
         {
             if (company == null)
             {
-                _logger.LogError($"{nameof(UpdateCompany)}  the Company object is null from user request");
+                _logger.LogError($"{nameof(UpdateCompanyAsync)}  the Company object is null from user request");
                 return BadRequest("CompanyForCreationDto object is null");
             }
 
-            var CompanyEntity = _repository.Company.GetCompanyIncludeEmployees(id , true);
+            var CompanyEntity = _repository.Company.GetCompanyIncludeEmployees(id, true);
             if (CompanyEntity == null)
             {
-                _logger.LogError($"{nameof(UpdateCompany)} Company with id = {id} doesnot exist in database");
+                _logger.LogError($"{nameof(UpdateCompanyAsync)} Company with id = {id} doesnot exist in database");
                 return NotFound($"Company with id = {id} doesnot exist in database");
             }
-           
+
             _mapper.Map(company, CompanyEntity);
             //foreach (var e in CompanyEntity.Employees)
             //{
             //    e.CompanyId = id;
             //}
-            _repository.Save();
-            return NoContent( );
+            await _repository.SaveAsync();
+            return NoContent();
         }
     }
 }
