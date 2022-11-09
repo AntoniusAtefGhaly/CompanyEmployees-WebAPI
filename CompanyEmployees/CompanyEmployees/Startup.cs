@@ -1,4 +1,5 @@
 using AutoMapper;
+using CompanyEmployees.ActionFilters;
 using CompanyEmployees.Extensions;
 using Contracts;
 using Entities;
@@ -42,9 +43,12 @@ namespace CompanyEmployees
             services.AddControllers();
             services.ConfigureRepository();
             services.ConfigureSqlContext(Configuration);
-           // services.AddAutoMapper(typeof(MappingProfile));
-           // var x=System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
-           //services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<ValidationFilterAttribute>();
+            services.AddScoped<ValidateCompanyExistsAttribute>();
+            services.AddScoped<ValidateEmployeeExistsAttributeFilter>();
+            // services.AddAutoMapper(typeof(MappingProfile));
+            // var x=System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+            //services.AddAutoMapper(typeof(Startup));
             services.AddAutoMapper(Assembly.Load("Entities"));
             //services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
