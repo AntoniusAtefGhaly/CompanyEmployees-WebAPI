@@ -1,6 +1,7 @@
 ﻿using Contracts;
 using Entities;
 using Entities.Models;
+using Entities.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,11 +36,13 @@ namespace Repository
                 .FirstOrDefault();
         }
 
-        public IEnumerable<Employee> GetEmployees(Guid CompanyId, bool trackChanges)
+        public IEnumerable<Employee> GetEmployees(Guid CompanyId, EmployeeParameters employeeParameters, bool trackChanges)
         {
             return FindByCondition(
                 e => e.CompanyId == CompanyId, trackChanges)
-                            .OrderBy(e => e.Name);
+                            .OrderBy(e => e.Name).
+                            Skip(employeeParameters.PageSize*(employeeParameters.PageNumber-1)).
+                            Take(employeeParameters.PageSize);
         }
         public void CreateEmployeeCollection(IEnumerable<Employee> employees, Guid CompanyId)
         {

@@ -88,9 +88,8 @@ namespace CompanyEmployees
             app.UseCors("CorsPolicy");
             app.UseForwardedHeaders(new ForwardedHeadersOptions { ForwardedHeaders = ForwardedHeaders.All });
 
-            app.UseAuthorization();
             app.UseRouting();
-
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -98,7 +97,6 @@ namespace CompanyEmployees
                     pattern:"{controller=Home}/{action=Index}/{id?}"
                     );
             });
-
         }
     }
 }

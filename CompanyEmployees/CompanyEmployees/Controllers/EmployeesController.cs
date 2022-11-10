@@ -2,6 +2,7 @@
 using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
+using Entities.RequestFeatures;
 using LoggerService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
@@ -26,7 +27,7 @@ namespace CompanyEmployees.Controllers
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
         [HttpGet]
-        public IActionResult GetCompanyEmployees(Guid companyId)
+        public IActionResult GetCompanyEmployees(Guid companyId,[FromQuery] EmployeeParameters employeeParameters)
         {
             var company = _repository.Company.GetCompany(companyId, false);
             if (company == null)
@@ -34,7 +35,7 @@ namespace CompanyEmployees.Controllers
                 _logger.LogError($"{nameof(GetCompanyEmployees)} company with id {companyId} not found ");
                 return NotFound();
             }
-            var employees = _repository.Employee.GetEmployees(companyId, false);
+            var employees = _repository.Employee.GetEmployees(companyId, employeeParameters, false);
             var employeesDto = _mapper.Map<IEnumerable<EmployeeDto>>(employees);
             return Ok(employeesDto);
         }
