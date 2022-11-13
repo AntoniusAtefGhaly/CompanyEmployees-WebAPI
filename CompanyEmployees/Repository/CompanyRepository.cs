@@ -1,7 +1,9 @@
 ﻿using Contracts;
 using Entities;
 using Entities.Models;
+using Entities.RequestFeatures;
 using Microsoft.EntityFrameworkCore;
+using Repository.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,10 +41,10 @@ namespace Repository
                 .ToList();
         }
 
-        public async Task<IEnumerable<Company>> GetAllCompaniesAsync(bool trackChanges)
+        public async Task<IEnumerable<Company>> GetAllCompaniesAsync(bool trackChanges, CompanyParameters companyparamter)
         {
             return await FindAll(trackChanges)
-                .OrderBy(c => c.Name)
+                .Sort(companyparamter.OrderBy)
                 .ToListAsync();
         }
 

@@ -4,6 +4,7 @@ using CompanyEmployees.ModelBinders;
 using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
+using Entities.RequestFeatures;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -33,13 +34,13 @@ namespace CompanyEmployees.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetCompanies()
+        public async Task<IActionResult> GetCompanies([FromQuery]CompanyParameters companyparamter)
         {
             /*to test global error handler*/
             // throw new Exception("Exception");
             try
             {
-                var companies = await _repository.Company.GetAllCompaniesAsync(false);
+                var companies = await _repository.Company.GetAllCompaniesAsync(false, companyparamter);
                 _logger.LogInfo($"{nameof(GetCompanies)}==list of companies returned");
                 //var companiesDto = companies.Select(c=>
                 //    new 

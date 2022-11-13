@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MtcWA9E6rhWP1jkW/t2Cb4aSHBs7esDiMr6Kk/bhBfu2FQ8qDRX9Jf6Dp8OUvQzQLrsuefKGjendso8tB1ieMw==",
+  "dgSpecHash": "QlG0Yg+QoI6zHKsmDbbjjKahWyH/+wxf+TlyGmz6nN2T8ExAzhzCSu+yzRR8Rr6VN51K+m3m/6E/cz1TM62z6A==",
   "success": true,
   "projectFilePath": "D:\\training\\study\\ASP_NETCoreWebAPI\\CompanyEmployees\\Repository\\Repository.csproj",
   "expectedPackageFiles": [
@@ -19,7 +19,8 @@
     "C:\\Users\\AntoniusA\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\AntoniusA\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\AntoniusA\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
-    "C:\\Users\\AntoniusA\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0\\system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512"
+    "C:\\Users\\AntoniusA\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0\\system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512",
+    "C:\\Users\\AntoniusA\\.nuget\\packages\\system.linq.dynamic.core\\1.2.23\\system.linq.dynamic.core.1.2.23.nupkg.sha512"
   ],
   "logs": []
 }
