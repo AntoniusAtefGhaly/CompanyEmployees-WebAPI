@@ -45,7 +45,7 @@ namespace CompanyEmployees
             services.ConfigureSqlContext(Configuration);
             services.AddScoped<ValidationFilterAttribute>();
             services.AddScoped<ValidateCompanyExistsAttribute>();
-            services.AddScoped<ValidateEmployeeExistsAttributeFilter>();
+            services.AddScoped<ValidateEmployeeCompanyExistsFilter>();
             // services.AddAutoMapper(typeof(MappingProfile));
             // var x=System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
             //services.AddAutoMapper(typeof(Startup));

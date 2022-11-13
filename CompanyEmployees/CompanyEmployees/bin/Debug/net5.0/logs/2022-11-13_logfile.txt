@@ -1,0 +1,84 @@
+2022-11-13 20:57:42.3911 ERROR === GetCompanyEmployees  with id: 2d5b7abc-9791-491b-8300-123152706a10 doesn't exist in the database.
+2022-11-13 20:58:09.4202 ERROR === GetEmployee  with id: f7e6a2da-3e30-4164-9c10-0001dabe1927 doesn't exist in the database.
+2022-11-13 20:58:28.2180 ERROR === Create  with id: 3fdfd576-cf65-4385-af83-2f3c41881669 doesn't exist in the database.
+2022-11-13 20:58:39.9665 ERROR === UpdateEmployee  with id: f7e6a2da-3e30-4164-9c10-0001dabe1927 doesn't exist in the database.
+2022-11-13 20:59:21.3677 INFO === GetCompanies==list of companies returned
+2022-11-13 21:00:25.5091 ERROR === Something went wrong: System.Collections.Generic.KeyNotFoundException: The given key 'companyId' was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at CompanyEmployees.ActionFilters.ValidateCompanyExistsAttribute.OnActionExecuting(ActionExecutingContext context) in F:\1.NET\ASP.NET\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\ActionFilters\ValidateCompanyExistsAttribute.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2022-11-13 21:00:25.6568 ERROR === Something went wrong in the GetCompanies action Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+2022-11-13 21:00:46.0557 ERROR === Something went wrong: System.Collections.Generic.KeyNotFoundException: The given key 'companyId' was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at CompanyEmployees.ActionFilters.ValidateCompanyExistsAttribute.OnActionExecuting(ActionExecutingContext context) in F:\1.NET\ASP.NET\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\ActionFilters\ValidateCompanyExistsAttribute.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2022-11-13 21:01:24.6644 ERROR === Something went wrong: System.Collections.Generic.KeyNotFoundException: The given key 'companyId' was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at CompanyEmployees.ActionFilters.ValidateCompanyExistsAttribute.OnActionExecuting(ActionExecutingContext context) in F:\1.NET\ASP.NET\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\ActionFilters\ValidateCompanyExistsAttribute.cs:line 36
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2022-11-13 21:01:51.7546 INFO === GetCompanies==list of companies returned
+2022-11-13 21:03:19.8172 ERROR === GetEmployee employee with id 21a3dc41-df6a-423a-9ee6-007872d9e4e0 not found
+2022-11-13 21:15:01.9039 ERROR === Delete  with id: 7b0e6911-7d1b-48f8-957b-641e4a8b2f7e doesn't exist in the database.
+2022-11-13 21:16:20.4887 ERROR === Delete employee  with id: 56bccb27-ddd9-468a-9847-993abcf4cddf doesn't exist in the database.
+2022-11-13 21:18:15.9580 ERROR === Something went wrong: System.NotImplementedException: The method or operation is not implemented.
+   at CompanyEmployees.ActionFilters.ValidateEmployeeCompanyExistsFilter.OnActionExecuted(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddleware.<Invoke>g__Awaited|6_0(ExceptionHandlerMiddleware middleware, HttpContext context, Task task)
+2022-11-13 21:19:08.0954 ERROR === Delete employee  with id: 80eabbc6-d67a-432b-81f2-6e1a0d30c7d6 doesn't exist in the database.
+2022-11-13 21:23:54.9098 ERROR === CreateEmployeeCollection  with id: 3fdfd576-cf65-4385-af83-2f3c41881669 doesn't exist in the database.
+2022-11-13 21:25:39.3094 ERROR === UpdateEmployee  with id: f7e6a2da-3e30-4164-9c10-0001dabe1927 doesn't exist in the database.
+2022-11-13 21:26:17.2727 ERROR === Create nvalid model state for the EmployeeForCreationDto object
+2022-11-13 21:27:48.0528 ERROR === Create nvalid model state for the EmployeeForCreationDto object
+2022-11-13 21:31:07.6677 ERROR === UpdateEmployee employee  with id: 21a3dc41-df6a-423a-9ee6-007872d9e4e0 doesn't exist in the database.
+2022-11-13 21:32:20.9338 ERROR === Create nvalid model state for the EmployeeForCreationDto object
+2022-11-13 21:35:54.0703 ERROR === Invalid model state for the object. Controller: Employees, action: UpdateEmployee
+2022-11-13 21:36:11.0190 ERROR === Invalid model state for the object. Controller: Employees, action: UpdateEmployee
+2022-11-13 21:39:52.1714 ERROR === Invalid model state for the object. Controller: Employees, action: Create
+2022-11-13 21:40:04.9840 ERROR === Invalid model state for the object. Controller: Employees, action: Create
+2022-11-13 21:40:17.1863 ERROR === Invalid model state for the object. Controller: Employees, action: Create
+2022-11-13 21:40:33.3532 ERROR === Invalid model state for the object. Controller: Employees, action: Create
+2022-11-13 21:42:50.5259 ERROR === CreateEmployeeCollection  with id: 3fdfd576-cf65-4385-af83-2f3c41881669 doesn't exist in the database.
+2022-11-13 21:44:37.2422 ERROR === Invalid model state for the object. Controller: Employees, action: CreateEmployeeCollection

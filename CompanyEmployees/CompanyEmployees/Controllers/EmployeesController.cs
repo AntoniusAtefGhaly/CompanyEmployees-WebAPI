@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CompanyEmployees.ActionFilters;
 using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
@@ -13,6 +14,7 @@ namespace CompanyEmployees.Controllers
 {
     [Route("api/Companies/{companyId}/Employees")]
     [ApiController]
+    [ServiceFilter(typeof(ValidateCompanyExistsAttribute))]
     public class EmployeesController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -28,12 +30,14 @@ namespace CompanyEmployees.Controllers
         [HttpGet]
         public IActionResult GetCompanyEmployees(Guid companyId)
         {
-            var company = _repository.Company.GetCompany(companyId, false);
-            if (company == null)
-            {
-                _logger.LogError($"{nameof(GetCompanyEmployees)} company with id {companyId} not found ");
-                return NotFound();
-            }
+            #region before filter
+            //var company = _repository.Company.GetCompany(companyId, false);
+            //if (company == null)
+            //{
+            //    _logger.LogError($"{nameof(GetCompanyEmployees)} company with id {companyId} not found ");
+            //    return NotFound();
+            //}
+            #endregion
             var employees = _repository.Employee.GetEmployees(companyId, false);
             var employeesDto = _mapper.Map<IEnumerable<EmployeeDto>>(employees);
             return Ok(employeesDto);
@@ -41,12 +45,14 @@ namespace CompanyEmployees.Controllers
         [HttpGet("{employeeId}", Name = "EmployeeById")]
         public IActionResult GetEmployee(Guid companyId, Guid employeeId)
         {
-            var company = _repository.Company.GetCompany(companyId, false);
-            if (company == null)
-            {
-                _logger.LogError($"{nameof(GetEmployee)} company with id {companyId} not found");
-                return NotFound();
-            }
+            #region before filter
+            //var company = _repository.Company.GetCompany(companyId, false);
+            //if (company == null)
+            //{
+            //    _logger.LogError($"{nameof(GetEmployee)} company with id {companyId} not found");
+            //    return NotFound();
+            //}
+            #endregion
             var employee = _repository.Employee.GetEmployee(companyId, employeeId, true);
             if (employee == null)
             {
@@ -57,25 +63,28 @@ namespace CompanyEmployees.Controllers
             return Ok(employyDto);
         }
         [HttpPost]
-        
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public IActionResult Create([FromBody] EmployeeForCreationDto employee, Guid companyId)
         {
-            if (employee == null)
-            {
-                _logger.LogError($"{nameof(Create)}  the employee object is null from user request");
-                return BadRequest("EmployeeForCreationDto object is null");
-            }
-            var company = _repository.Company.GetCompany(companyId, false);
-            if (company == null)
-            {
-                _logger.LogError($"{nameof(Create)} company with id {companyId} doesnot exsist in database ");
-                return NotFound("company with id { companyId}    not found in database");
-            }
-            if (!ModelState.IsValid)
-            {
-                _logger.LogError($"{nameof(Create)} nvalid model state for the EmployeeForCreationDto object");
-                return UnprocessableEntity(ModelState);
-            }
+            #region   before filter
+            //var company = _repository.Company.GetCompany(companyId, false);
+            //if (company == null)
+            //{
+            //    _logger.LogError($"{nameof(Create)} company with id {companyId} doesnot exsist in database ");
+            //    return NotFound("company with id { companyId}    not found in database");
+            //}
+            //if (employee == null)
+            //{
+            //    _logger.LogError($"{nameof(Create)}  the employee object is null from user request");
+            //    return BadRequest("EmployeeForCreationDto object is null");
+            //}
+            //if (!ModelState.IsValid)
+            //{
+            //    _logger.LogError($"{nameof(Create)} nvalid model state for the EmployeeForCreationDto object");
+            //    return UnprocessableEntity(ModelState);
+            //}
+            #endregion
+
             var employeeEntity = _mapper.Map<Employee>(employee);
 
             _repository.Employee.CreateEmployee(employeeEntity, companyId);
@@ -89,92 +98,112 @@ namespace CompanyEmployees.Controllers
                 employeeId = employeeEntity.Id
             }, returnEmployee);
         }
-        
+
         [HttpDelete("{id}")]
-        public IActionResult Delete(Guid id,Guid companyId)
+        [ServiceFilter(typeof(ValidateEmployeeCompanyExistsFilter))]
+        public IActionResult Delete(Guid id, Guid companyId)
         {
-            var company = _repository.Company.GetCompany(companyId,false);
-            if(company == null)
-            {
-                _logger.LogError($"{nameof(Delete)} company with id = {id} doesnot exist in database");
-                return NotFound($"company with id = {id} doesnot exist in database");
-            }
-            var employee = _repository.Employee.GetEmployee(companyId, id, false);
-            if (employee == null)
-            {
-                _logger.LogError($"{nameof(Delete)} employee with id = {id} doesnot exist in database");
-                return NotFound($"employee with id = {id} doesnot exist in database");
-            }
+            #region before filter
+            //var company = _repository.Company.GetCompany(companyId,false);
+            //if(company == null)
+            //{
+            //    _logger.LogError($"{nameof(Delete)} company with id = {id} doesnot exist in database");
+            //    return NotFound($"company with id = {id} doesnot exist in database");
+            //}
+            //var employee = _repository.Employee.GetEmployee(companyId, id, false);
+            //if (employee == null)
+            //{
+            //    _logger.LogError($"{nameof(Delete)} employee with id = {id} doesnot exist in database");
+            //    return NotFound($"employee with id = {id} doesnot exist in database");
+            //}
+            #endregion
+            var employee = (Employee)HttpContext.Items["employee"];
             _repository.Employee.DeleteEmployee(employee);
             _repository.Save();
             return NoContent();
 
         }
         [HttpPost("collection")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public IActionResult CreateEmployeeCollection([FromBody] IEnumerable<EmployeeForCreationDto> employees, Guid companyId)
         {
-            if (employees == null)
-            {
-                _logger.LogError($"{nameof(CreateEmployeeCollection)} user request have employees object is null");
-                return BadRequest("employees object is null");
-            }
-            var company = _repository.Company.GetCompany(companyId, false);
-            if (company == null)
-            {
-                _logger.LogError($"{nameof(CreateEmployeeCollection)} the company with id {companyId} doesnot exsist in database");
-                return NotFound($"the company with id {companyId} doesnot exsist in database");
-            }
+
+            #region before filter
+            //var company = _repository.Company.GetCompany(companyId, false);
+            //if (company == null)
+            //{
+            //    _logger.LogError($"{nameof(CreateEmployeeCollection)} the company with id {companyId} doesnot exsist in database");
+            //    return NotFound($"the company with id {companyId} doesnot exsist in database");
+            //}
+            //if (employees == null)
+            //{
+            //    _logger.LogError($"{nameof(CreateEmployeeCollection)} user request have employees object is null");
+            //    return BadRequest("employees object is null");
+            //}
+            #endregion
             var employeesEntity = _mapper.Map<IEnumerable<Employee>>(employees);
-            _repository.Employee.CreateEmployeeCollection(employeesEntity,companyId);
+            _repository.Employee.CreateEmployeeCollection(employeesEntity, companyId);
             _repository.Save();
             var employeesReturned = _mapper.Map<IEnumerable<EmployeeDto>>(employeesEntity);
             return Ok(employeesReturned);
             //return CreatedAtRoute("",);
         }
         [HttpPut("{id}")]
-        public IActionResult UpdateEmployee([FromBody] EmployeeForUpdateDto employee,Guid companyId, Guid  id)
+        [ServiceFilter(typeof(ValidateEmployeeCompanyExistsFilter))]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+     
+        public IActionResult UpdateEmployee([FromBody] EmployeeForUpdateDto employee, Guid companyId, Guid id)
         {
-            if (employee == null)
-            {
-                _logger.LogError($"{nameof(UpdateEmployee)}  the employee object is null from user request");
-                return BadRequest("EmployeeForCreationDto object is null");
-            }
-            var company = _repository.Company.GetCompany(companyId, false);
-            if (company == null)
-            {
-                _logger.LogError($"{nameof(UpdateEmployee)} the company with id {companyId} doesnot exsist in database");
-                return NotFound($"the company with id {companyId} doesnot exsist in database");
-            }
-            if (!ModelState.IsValid)
-            {
-                _logger.LogError($"{nameof(Create)} nvalid model state for the EmployeeForCreationDto object");
-                return UnprocessableEntity(ModelState);
-            }
-            var employeeEntity = _repository.Employee.GetEmployee(companyId, id, true);
-            if (employeeEntity == null)
-            {
-                _logger.LogError($"{nameof(UpdateEmployee)} employee with id = {id} doesnot exist in database");
-                return NotFound($"employee with id = {id} doesnot exist in database");
-            }
-           _mapper.Map(employee, employeeEntity);
+            #region before filter
+
+            //if (employee == null)
+            //{
+            //    _logger.LogError($"{nameof(UpdateEmployee)}  the employee object is null from user request");
+            //    return BadRequest("EmployeeForCreationDto object is null");
+            //}
+            //if (!ModelState.IsValid)
+            //{
+            //    _logger.LogError($"{nameof(Create)} nvalid model state for the EmployeeForCreationDto object");
+            //    return UnprocessableEntity(ModelState);
+            //}
+            //var company = _repository.Company.GetCompany(companyId, false);
+            //if (company == null)
+            //{
+            //    _logger.LogError($"{nameof(UpdateEmployee)} the company with id {companyId} doesnot exsist in database");
+            //    return NotFound($"the company with id {companyId} doesnot exsist in database");
+            //}
+
+
+            //var employeeEntity = _repository.Employee.GetEmployee(companyId, id, true);
+            //if (employeeEntity == null)
+            //{
+            //    _logger.LogError($"{nameof(UpdateEmployee)} employee with id = {id} doesnot exist in database");
+            //    return NotFound($"employee with id = {id} doesnot exist in database");
+            //}
+            #endregion
+
+            var employeeEntity = (Employee)HttpContext.Items["employee"];
+            _mapper.Map(employee, employeeEntity);
             _repository.Save();
             return Ok(employee);
         }
 
         [HttpPatch("{id}")]
-        public IActionResult PartiallyUpdateEmployeeForCompany([FromBody]  JsonPatchDocument<EmployeeForUpdateDto> patchDocument, Guid companyId, Guid id)
+        public IActionResult PartiallyUpdateEmployeeForCompany([FromBody] JsonPatchDocument<EmployeeForUpdateDto> patchDocument, Guid companyId, Guid id)
         {
             if (patchDocument == null)
             {
                 _logger.LogError($"{nameof(PartiallyUpdateEmployeeForCompany)}  the patchDocument object is null from user request");
                 return BadRequest("patchDocument object is null");
             }
-            var company = _repository.Company.GetCompany(companyId, false);
-            if (company == null)
-            {
-                _logger.LogError($"{nameof(PartiallyUpdateEmployeeForCompany)} the company with id {companyId} doesnot exsist in database");
-                return NotFound($"the company with id {companyId} doesnot exsist in database");
-            }
+            #region before filter
+            //var company = _repository.Company.GetCompany(companyId, false);
+            //if (company == null)
+            //{
+            //    _logger.LogError($"{nameof(PartiallyUpdateEmployeeForCompany)} the company with id {companyId} doesnot exsist in database");
+            //    return NotFound($"the company with id {companyId} doesnot exsist in database");
+            //}
+            #endregion
             var employeeEntity = _repository.Employee.GetEmployee(companyId, id, true);
             if (employeeEntity == null)
             {
@@ -182,14 +211,14 @@ namespace CompanyEmployees.Controllers
                 return NotFound($"employee with id = {id} doesnot exist in database");
             }
             var employeeToPatch = _mapper.Map<EmployeeForUpdateDto>(employeeEntity);
-            patchDocument.ApplyTo(employeeToPatch,ModelState);
-           TryValidateModel(employeeToPatch);
+            patchDocument.ApplyTo(employeeToPatch, ModelState);
+            TryValidateModel(employeeToPatch);
             if (!ModelState.IsValid)
             {
                 _logger.LogError("Invalid model state for the patch document");
                 return UnprocessableEntity(ModelState);
             }
-            _mapper.Map(employeeToPatch, employeeEntity); 
+            _mapper.Map(employeeToPatch, employeeEntity);
             _repository.Save();
             return NoContent();
         }

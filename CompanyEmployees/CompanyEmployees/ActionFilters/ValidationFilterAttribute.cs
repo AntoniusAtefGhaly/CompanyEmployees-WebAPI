@@ -19,7 +19,6 @@ namespace CompanyEmployees.ActionFilters
         {
 
         }
-
         public void OnActionExecuting(ActionExecutingContext context)
         {
             var action = context.RouteData.Values["action"];

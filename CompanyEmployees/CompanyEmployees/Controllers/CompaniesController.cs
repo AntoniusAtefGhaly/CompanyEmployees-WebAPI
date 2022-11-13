@@ -16,6 +16,7 @@ namespace CompanyEmployees.Controllers
 {
     [Route("api/Companies")]
     [ApiController]
+
     public class CompaniesController : ControllerBase
     {
         private readonly IRepositoryManager _repository;
@@ -142,7 +143,7 @@ namespace CompanyEmployees.Controllers
         [ServiceFilter(typeof(ValidateCompanyExistsAttribute))]
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
-            var company =(Company) HttpContext.Items;
+            var company =(Company)HttpContext.Items["company"];
                
             //if (company == null)
             //{
