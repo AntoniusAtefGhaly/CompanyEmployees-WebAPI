@@ -1052,10 +1052,14 @@
       "System.Linq.Dynamic.Core/1.2.23": {
         "type": "package",
         "compile": {
-          "lib/net5.0/System.Linq.Dynamic.Core.dll": {}
+          "lib/net5.0/System.Linq.Dynamic.Core.dll": {
+            "related": ".pdb;.xml"
+          }
         },
         "runtime": {
-          "lib/net5.0/System.Linq.Dynamic.Core.dll": {}
+          "lib/net5.0/System.Linq.Dynamic.Core.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "System.Net.NameResolution/4.3.0": {
