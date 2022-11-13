@@ -5,6 +5,7 @@ using Entities.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Repository.Extensions;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,21 +41,20 @@ namespace Repository
         {
             var entities= FindByCondition(
                 e => (
-                e.CompanyId == CompanyId)&&
-                (e.Age>employeeParameters.MinAge)&&
-                (e.Age<employeeParameters.MaxAge)
-                , trackChanges)
-                            .OrderBy(e => e.Name).
+                e.CompanyId == CompanyId)
+                , trackChanges).
+                FilterEmployees(employeeParameters.MinAge, employeeParameters.MaxAge).
+                Search(employeeParameters.SearchTerm).
+                            //OrderBy(e => e.Name).
                             Skip(employeeParameters.PageSize * (employeeParameters.PageNumber - 1)).
                             Take(employeeParameters.PageSize);
 
             var count = FindByCondition(
-                e => (
-                e.CompanyId == CompanyId) &&
-                (e.Age > employeeParameters.MinAge) &&
-                (e.Age < employeeParameters.MaxAge)
-                , trackChanges)
-                            .OrderBy(e => e.Name).Count();
+                 e => (
+                e.CompanyId == CompanyId)
+                , trackChanges).
+                FilterEmployees(employeeParameters.MinAge, employeeParameters.MaxAge).
+                Search(employeeParameters.SearchTerm).Count();
 
             return new PagedList<Employee>(entities.ToList(), count, employeeParameters.PageNumber, employeeParameters.PageSize );
         }
