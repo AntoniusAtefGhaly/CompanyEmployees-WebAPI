@@ -30,6 +30,9 @@ namespace CompanyEmployees.Controllers
         [HttpGet]
         public IActionResult GetCompanyEmployees(Guid companyId,[FromQuery] EmployeeParameters employeeParameters)
         {
+            if (!employeeParameters.ValidAgeRange)
+                return BadRequest("Max age can't be less than min age.");
+
             var company = _repository.Company.GetCompany(companyId, false);
             if (company == null)
             {

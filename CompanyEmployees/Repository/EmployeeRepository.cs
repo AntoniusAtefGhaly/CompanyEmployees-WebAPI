@@ -39,14 +39,23 @@ namespace Repository
         public PagedList<Employee> GetEmployees(Guid CompanyId, EmployeeParameters employeeParameters, bool trackChanges)
         {
             var entities= FindByCondition(
-                e => e.CompanyId == CompanyId, trackChanges)
+                e => (
+                e.CompanyId == CompanyId)&&
+                (e.Age>employeeParameters.MinAge)&&
+                (e.Age<employeeParameters.MaxAge)
+                , trackChanges)
                             .OrderBy(e => e.Name).
                             Skip(employeeParameters.PageSize * (employeeParameters.PageNumber - 1)).
                             Take(employeeParameters.PageSize);
 
             var count = FindByCondition(
-                e => e.CompanyId == CompanyId, trackChanges)
+                e => (
+                e.CompanyId == CompanyId) &&
+                (e.Age > employeeParameters.MinAge) &&
+                (e.Age < employeeParameters.MaxAge)
+                , trackChanges)
                             .OrderBy(e => e.Name).Count();
+
             return new PagedList<Employee>(entities.ToList(), count, employeeParameters.PageNumber, employeeParameters.PageSize );
         }
         public void CreateEmployeeCollection(IEnumerable<Employee> employees, Guid CompanyId)
