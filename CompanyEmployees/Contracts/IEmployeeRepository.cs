@@ -10,7 +10,7 @@ namespace Contracts
 {
     public interface IEmployeeRepository: IRepositoryBase<Employee>
     {
-        public IEnumerable<Employee> GetEmployees(Guid CompanyId, EmployeeParameters employeeParameters, bool trackChanges);
+        public PagedList<Employee> GetEmployees(Guid CompanyId, EmployeeParameters employeeParameters, bool trackChanges);
         public Employee GetEmployee(Guid CompanyId,Guid EmployeeID, bool trackChanges);
         public void CreateEmployee(Employee employee, Guid CompanyId);
         public void DeleteEmployee(Employee employee);
