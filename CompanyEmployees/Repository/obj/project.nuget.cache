@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+EgptoUituKx2URVUmK2bY7olBaaDTg932Nd5cVoadydsm8Rh+VO5Li1Oltkm/wtArP4vDSDe6mBk6Yfj0TvhQ==",
+  "dgSpecHash": "Jxu2WM38utg8ko9zhetdliryR+yfz82g9XMQ8E3L2EbxfMhLFYenVODnCvNNv6o0ZlasIB4iBuw2hGFr1IRb2w==",
   "success": true,
   "projectFilePath": "F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Repository\\Repository.csproj",
   "expectedPackageFiles": [
@@ -19,7 +19,15 @@
     "C:\\Users\\Antonius\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\Antonius\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\Antonius\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
-    "C:\\Users\\Antonius\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0\\system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512"
+    "C:\\Users\\Antonius\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0\\system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512",
+    "C:\\Users\\Antonius\\.nuget\\packages\\system.linq.dynamic.core\\1.2.23\\system.linq.dynamic.core.1.2.23.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file F:\\1.NET\\ASP.NET\\ASP_NETCoreWebAPI\\CompanyEmployees\\Repository\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

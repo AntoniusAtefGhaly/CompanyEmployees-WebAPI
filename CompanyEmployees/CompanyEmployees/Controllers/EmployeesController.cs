@@ -3,10 +3,12 @@ using CompanyEmployees.ActionFilters;
 using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
+using Entities.RequestFeatures;
 using LoggerService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -28,7 +30,7 @@ namespace CompanyEmployees.Controllers
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
         [HttpGet]
-        public IActionResult GetCompanyEmployees(Guid companyId)
+        public IActionResult GetCompanyEmployees(Guid companyId,[FromQuery] EmployeeParameters employeeParameters)
         {
             #region before filter
             //var company = _repository.Company.GetCompany(companyId, false);
@@ -38,8 +40,11 @@ namespace CompanyEmployees.Controllers
             //    return NotFound();
             //}
             #endregion
-            var employees = _repository.Employee.GetEmployees(companyId, false);
+            var employees = _repository.Employee.GetEmployees(companyId, employeeParameters, false);
             var employeesDto = _mapper.Map<IEnumerable<EmployeeDto>>(employees);
+            
+            Response.Headers.Add("X-Pagination",
+           JsonConvert.SerializeObject(employees.MetaData));
             return Ok(employeesDto);
         }
         [HttpGet("{employeeId}", Name = "EmployeeById")]

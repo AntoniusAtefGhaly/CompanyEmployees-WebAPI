@@ -1,9 +1,11 @@
 ﻿using Contracts;
 using Entities;
 using Entities.Models;
+using Entities.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Repository.Extensions;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,11 +37,26 @@ namespace Repository
                 .FirstOrDefault();
         }
 
-        public IEnumerable<Employee> GetEmployees(Guid CompanyId, bool trackChanges)
+        public PagedList<Employee> GetEmployees(Guid CompanyId, EmployeeParameters employeeParameters, bool trackChanges)
         {
-            return FindByCondition(
-                e => e.CompanyId == CompanyId, trackChanges)
-                            .OrderBy(e => e.Name);
+            var entities= FindByCondition(
+                e => (
+                e.CompanyId == CompanyId)
+                , trackChanges).
+                FilterEmployees(employeeParameters.MinAge, employeeParameters.MaxAge).
+                Search(employeeParameters.SearchTerm).
+                            Sort(employeeParameters.OrderBy).
+                            Skip(employeeParameters.PageSize * (employeeParameters.PageNumber - 1)).
+                            Take(employeeParameters.PageSize);
+
+            var count = FindByCondition(
+                 e => (
+                e.CompanyId == CompanyId)
+                , trackChanges).
+                FilterEmployees(employeeParameters.MinAge, employeeParameters.MaxAge).
+                Search(employeeParameters.SearchTerm).Count();
+
+            return new PagedList<Employee>(entities.ToList(), count, employeeParameters.PageNumber, employeeParameters.PageSize );
         }
         public void CreateEmployeeCollection(IEnumerable<Employee> employees, Guid CompanyId)
         {

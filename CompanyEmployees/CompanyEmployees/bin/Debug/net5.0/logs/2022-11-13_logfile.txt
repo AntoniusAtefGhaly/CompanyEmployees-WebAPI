@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2022-11-13 20:57:42.3911 ERROR === GetCompanyEmployees  with id: 2d5b7abc-9791-491b-8300-123152706a10 doesn't exist in the database.
 2022-11-13 20:58:09.4202 ERROR === GetEmployee  with id: f7e6a2da-3e30-4164-9c10-0001dabe1927 doesn't exist in the database.
 2022-11-13 20:58:28.2180 ERROR === Create  with id: 3fdfd576-cf65-4385-af83-2f3c41881669 doesn't exist in the database.
@@ -82,3 +83,8 @@
 2022-11-13 21:40:33.3532 ERROR === Invalid model state for the object. Controller: Employees, action: Create
 2022-11-13 21:42:50.5259 ERROR === CreateEmployeeCollection  with id: 3fdfd576-cf65-4385-af83-2f3c41881669 doesn't exist in the database.
 2022-11-13 21:44:37.2422 ERROR === Invalid model state for the object. Controller: Employees, action: CreateEmployeeCollection
+=======
+2022-11-13 15:55:19.7928 INFO === GetCompanies==list of companies returned
+2022-11-13 15:56:17.2855 INFO === GetCompanies==list of companies returned
+2022-11-13 15:56:57.4072 INFO === GetCompanies==list of companies returned
+>>>>>>> 0d233f307b026a3d73ab49f54280dd627cfb7436
