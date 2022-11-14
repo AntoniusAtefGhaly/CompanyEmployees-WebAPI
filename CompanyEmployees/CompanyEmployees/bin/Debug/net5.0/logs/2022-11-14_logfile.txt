@@ -1,0 +1,1 @@
+2022-11-14 09:59:44.5014 INFO === GetCompanies==list of companies returned

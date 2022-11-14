@@ -21,13 +21,15 @@ namespace CompanyEmployees.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IRepositoryManager _repository;
-        private readonly ILoggerManager _logger;
+        private readonly ILoggerManager _logger; 
+        private readonly IDataShaper<EmployeeDto> _dataShaper;
 
-        public EmployeesController(IMapper mapper, IRepositoryManager repository, ILoggerManager logger)
+        public EmployeesController(IMapper mapper, IRepositoryManager repository, ILoggerManager logger, IDataShaper<EmployeeDto> dataShaper)
         {
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _dataShaper = dataShaper ?? throw new ArgumentNullException(nameof(dataShaper));
         }
         [HttpGet]
         public IActionResult GetCompanyEmployees(Guid companyId,[FromQuery] EmployeeParameters employeeParameters)
@@ -45,7 +47,7 @@ namespace CompanyEmployees.Controllers
             
             Response.Headers.Add("X-Pagination",
            JsonConvert.SerializeObject(employees.MetaData));
-            return Ok(employeesDto);
+            return Ok(_dataShaper.ShapeData(employeesDto,employeeParameters.Fields));
         }
         [HttpGet("{employeeId}", Name = "EmployeeById")]
         public IActionResult GetEmployee(Guid companyId, Guid employeeId)

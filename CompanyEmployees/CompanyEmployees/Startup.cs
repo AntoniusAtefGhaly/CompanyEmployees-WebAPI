@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NLog;
+using Repository.DataShaping;
 using System.IO;
 using System.Reflection;
 
@@ -46,10 +47,13 @@ namespace CompanyEmployees
             services.AddScoped<ValidationFilterAttribute>();
             services.AddScoped<ValidateCompanyExistsAttribute>();
             services.AddScoped<ValidateEmployeeCompanyExistsFilter>();
+            services.AddScoped<IDataShaper<EmployeeDto>, DataShaper<EmployeeDto>>();
+
             // services.AddAutoMapper(typeof(MappingProfile));
             // var x=System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
             //services.AddAutoMapper(typeof(Startup));
             services.AddAutoMapper(Assembly.Load("Entities"));
+
             //services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             //accept header

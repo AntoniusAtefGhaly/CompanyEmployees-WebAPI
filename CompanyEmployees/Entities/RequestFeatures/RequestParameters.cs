@@ -24,6 +24,7 @@ namespace Entities.RequestFeatures
         }
         public string OrderBy { set; get; }
         public string SearchTerm { set; get; }
+        public string Fields { set; get; }
 
     }
 }
