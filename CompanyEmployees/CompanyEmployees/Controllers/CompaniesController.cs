@@ -41,9 +41,10 @@ namespace CompanyEmployees.Controllers
             return   Ok();
         }
         [HttpGet]
-        //[HttpHead]
+        [HttpHead]
         public async Task<IActionResult> GetCompanies([FromQuery]CompanyParameters companyparamter)
         {
+
             /*to test global error handler*/
             // throw new Exception("Exception");
             try
@@ -75,6 +76,7 @@ namespace CompanyEmployees.Controllers
         }
 
         [HttpGet("{id}", Name = "CompanyById")]
+        [HttpHead("{id}")]
         //[HttpHead]
         public async Task<IActionResult> GetCompany(Guid id)
         {
@@ -115,7 +117,7 @@ namespace CompanyEmployees.Controllers
         }
 
         [HttpGet("collection/{ids}", Name = "GetCompanyCollection")]
-        //[HttpHead]
+        [HttpHead("collection/{ids}")]
         public async Task<IActionResult> GetCompanyCollection([ModelBinder(BinderType = typeof(ArrayModelBinder))] IEnumerable<Guid> ids)
         {
             if (ids == null)

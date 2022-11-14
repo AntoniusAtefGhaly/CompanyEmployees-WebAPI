@@ -17,7 +17,7 @@ namespace CompanyEmployees.Controllers
 {
     [Route("api/Companies/{companyId}/Employees")]
     [ApiController]
-    [ServiceFilter(typeof(ValidateCompanyExistsAttribute))]
+//    [ServiceFilter(typeof(ValidateCompanyExistsAttribute))]
     public class EmployeesController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -59,7 +59,8 @@ namespace CompanyEmployees.Controllers
             //   employeeParameters.Fields, companyId, HttpContext);
             //return links.HasLinks ? Ok(links.LinkedEntities) : Ok(links.ShapedEntities);
         }
-        [HttpHead]
+
+        [HttpHead("{employeeId}")]
         [HttpGet("{employeeId}", Name = "EmployeeById")]
         public IActionResult GetEmployee(Guid companyId, Guid employeeId)
         {
@@ -81,7 +82,6 @@ namespace CompanyEmployees.Controllers
             return Ok(employyDto);
         }
         [HttpPost]
-
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public IActionResult Create([FromBody] EmployeeForCreationDto employee, Guid companyId)
         {
