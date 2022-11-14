@@ -35,8 +35,10 @@ namespace CompanyEmployees.Controllers
             _dataShaper = dataShaper ?? throw new ArgumentNullException(nameof(dataShaper));
             _employeeLinks = employeeLinks; 
         }
+        
         [HttpGet]
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
+        [HttpHead]
         public IActionResult GetCompanyEmployees(Guid companyId,[FromQuery] EmployeeParameters employeeParameters)
         {
             #region before filter
@@ -56,8 +58,8 @@ namespace CompanyEmployees.Controllers
             //var links = _employeeLinks.TryGenerateLinks(employeesDto,
             //   employeeParameters.Fields, companyId, HttpContext);
             //return links.HasLinks ? Ok(links.LinkedEntities) : Ok(links.ShapedEntities);
-
         }
+        [HttpHead]
         [HttpGet("{employeeId}", Name = "EmployeeById")]
         public IActionResult GetEmployee(Guid companyId, Guid employeeId)
         {
@@ -79,6 +81,7 @@ namespace CompanyEmployees.Controllers
             return Ok(employyDto);
         }
         [HttpPost]
+
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public IActionResult Create([FromBody] EmployeeForCreationDto employee, Guid companyId)
         {

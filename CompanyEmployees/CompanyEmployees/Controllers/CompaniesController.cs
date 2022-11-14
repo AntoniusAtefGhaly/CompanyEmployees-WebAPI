@@ -33,8 +33,15 @@ namespace CompanyEmployees.Controllers
             _logger = loggerManager;
             _mapper = mapper;
         }
-
+        [HttpOptions]
+        public   IActionResult GetCompaniesOptions()
+        {
+            Response.Headers.Add("allow", "Get,Post,Option");
+            Response.Headers.Add("content-length", "0");
+            return   Ok();
+        }
         [HttpGet]
+        //[HttpHead]
         public async Task<IActionResult> GetCompanies([FromQuery]CompanyParameters companyparamter)
         {
             /*to test global error handler*/
@@ -68,6 +75,7 @@ namespace CompanyEmployees.Controllers
         }
 
         [HttpGet("{id}", Name = "CompanyById")]
+        //[HttpHead]
         public async Task<IActionResult> GetCompany(Guid id)
         {
             var company = await _repository.Company.GetCompanyAsync(id, false);
@@ -107,6 +115,7 @@ namespace CompanyEmployees.Controllers
         }
 
         [HttpGet("collection/{ids}", Name = "GetCompanyCollection")]
+        //[HttpHead]
         public async Task<IActionResult> GetCompanyCollection([ModelBinder(BinderType = typeof(ArrayModelBinder))] IEnumerable<Guid> ids)
         {
             if (ids == null)
