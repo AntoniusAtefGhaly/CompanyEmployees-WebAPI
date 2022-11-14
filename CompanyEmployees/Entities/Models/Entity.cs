@@ -75,7 +75,7 @@ namespace Entities.Models
             writer.WriteString(value.ToString());
             writer.WriteEndElement();
         }
-
+      
         public void Add(string key, object value)
         {
             _expando.Add(key, value);
@@ -162,6 +162,6 @@ namespace Entities.Models
         {
             return GetEnumerator();
         }
-        
+
     }
 }

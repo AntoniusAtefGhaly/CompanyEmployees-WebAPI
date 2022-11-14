@@ -1,6 +1,7 @@
 using AutoMapper;
 using CompanyEmployees.ActionFilters;
 using CompanyEmployees.Extensions;
+using CompanyEmployees.Utility;
 using Contracts;
 using Entities;
 using Entities.DataTransferObjects;
@@ -44,10 +45,15 @@ namespace CompanyEmployees
             services.AddControllers();
             services.ConfigureRepository();
             services.ConfigureSqlContext(Configuration);
+            services.AddCustomMediaTypes();
+
             services.AddScoped<ValidationFilterAttribute>();
             services.AddScoped<ValidateCompanyExistsAttribute>();
             services.AddScoped<ValidateEmployeeCompanyExistsFilter>();
+            services.AddScoped<ValidateMediaTypeAttribute>();
+
             services.AddScoped<IDataShaper<EmployeeDto>, DataShaper<EmployeeDto>>();
+            services.AddScoped<EmployeeLinks, EmployeeLinks>();
 
             // services.AddAutoMapper(typeof(MappingProfile));
             // var x=System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;

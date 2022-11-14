@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CompanyEmployees.ActionFilters;
+using CompanyEmployees.Utility;
 using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
@@ -23,15 +24,19 @@ namespace CompanyEmployees.Controllers
         private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger; 
         private readonly IDataShaper<EmployeeDto> _dataShaper;
+        private readonly EmployeeLinks _employeeLinks;
 
-        public EmployeesController(IMapper mapper, IRepositoryManager repository, ILoggerManager logger, IDataShaper<EmployeeDto> dataShaper)
+
+        public EmployeesController(IMapper mapper, IRepositoryManager repository, ILoggerManager logger, IDataShaper<EmployeeDto> dataShaper, EmployeeLinks employeeLinks)
         {
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _dataShaper = dataShaper ?? throw new ArgumentNullException(nameof(dataShaper));
+            _employeeLinks = employeeLinks; 
         }
         [HttpGet]
+        [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
         public IActionResult GetCompanyEmployees(Guid companyId,[FromQuery] EmployeeParameters employeeParameters)
         {
             #region before filter
@@ -48,6 +53,10 @@ namespace CompanyEmployees.Controllers
             Response.Headers.Add("X-Pagination",
            JsonConvert.SerializeObject(employees.MetaData));
             return Ok(_dataShaper.ShapeData(employeesDto,employeeParameters.Fields));
+            //var links = _employeeLinks.TryGenerateLinks(employeesDto,
+            //   employeeParameters.Fields, companyId, HttpContext);
+            //return links.HasLinks ? Ok(links.LinkedEntities) : Ok(links.ShapedEntities);
+
         }
         [HttpGet("{employeeId}", Name = "EmployeeById")]
         public IActionResult GetEmployee(Guid companyId, Guid employeeId)
