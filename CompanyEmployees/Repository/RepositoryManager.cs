@@ -1,18 +1,14 @@
 ﻿using Contracts;
 using Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Repository
 {
     public class RepositoryManager : IRepositoryManager
     {
-        RepositoryContext repositoryContext;
-        ICompanyRepository  _companyRepository;
-        IEmployeeRepository _employeeRepository;
+        private RepositoryContext repositoryContext;
+        private ICompanyRepository _companyRepository;
+        private IEmployeeRepository _employeeRepository;
 
         public RepositoryManager(RepositoryContext repositoryContext)
         {
@@ -21,7 +17,8 @@ namespace Repository
             //_employeeRepository = employeeRepository;
         }
 
-        public ICompanyRepository Company {
+        public ICompanyRepository Company
+        {
             get
             {
                 if (_companyRepository == null)
@@ -36,7 +33,7 @@ namespace Repository
         {
             get
             {
-                if (_employeeRepository== null)
+                if (_employeeRepository == null)
                 {
                     _employeeRepository = new EmployeeRepository(repositoryContext);
                 }
@@ -44,15 +41,14 @@ namespace Repository
             }
         }
 
-        public void  Save()
+        public void Save()
         {
             repositoryContext.SaveChanges();
         }
 
-        public async Task   SaveAsync()
+        public async Task SaveAsync()
         {
             await repositoryContext.SaveChangesAsync();
         }
-
     }
 }

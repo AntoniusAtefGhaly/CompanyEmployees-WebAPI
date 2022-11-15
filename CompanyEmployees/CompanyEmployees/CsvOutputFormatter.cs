@@ -4,13 +4,12 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Net.Http.Headers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CompanyEmployees
 {
-    public class CsvOutputFormatter: TextOutputFormatter
+    public class CsvOutputFormatter : TextOutputFormatter
     {
         public CsvOutputFormatter()
         {
@@ -18,7 +17,8 @@ namespace CompanyEmployees
             SupportedEncodings.Add(Encoding.UTF8);
             SupportedEncodings.Add(Encoding.Unicode);
         }
-        public override async Task  
+
+        public override async Task
             WriteResponseBodyAsync
             (OutputFormatterWriteContext context, Encoding selectedEncoding)
         {
@@ -37,6 +37,7 @@ namespace CompanyEmployees
             }
             await response.WriteAsync(buffer.ToString());
         }
+
         protected override bool CanWriteType(Type type)
         {
             if (typeof(CompanyDto).IsAssignableFrom(type) ||
@@ -51,7 +52,5 @@ namespace CompanyEmployees
         {
             buffer.AppendLine($"{company.Id},\"{company.Name},\"{company.FullAddress}\"");
         }
-
-
     }
 }

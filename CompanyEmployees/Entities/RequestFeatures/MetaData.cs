@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Entities.RequestFeatures
+﻿namespace Entities.RequestFeatures
 {
     public class MetaData
     {
@@ -20,11 +14,12 @@ namespace Entities.RequestFeatures
                 return CurrentPage > 1;
             }
         }
+
         public bool HasNext
         {
             get
             {
-                return CurrentPage <TotalPages;
+                return CurrentPage < TotalPages;
             }
         }
     }

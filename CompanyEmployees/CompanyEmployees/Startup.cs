@@ -1,14 +1,11 @@
-using AutoMapper;
 using CompanyEmployees.ActionFilters;
 using CompanyEmployees.Extensions;
 using CompanyEmployees.Utility;
 using Contracts;
-using Entities;
 using Entities.DataTransferObjects;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -33,10 +30,9 @@ namespace CompanyEmployees
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddDbContext<RepositoryContext>(options =>
-     //options.UseSqlServer(
-     //    Configuration.GetConnectionString("sqlConnection"),
-     //        b => b.MigrationsAssembly(typeof(RepositoryContext).Assembly.FullName)));
-
+            //options.UseSqlServer(
+            //    Configuration.GetConnectionString("sqlConnection"),
+            //        b => b.MigrationsAssembly(typeof(RepositoryContext).Assembly.FullName)));
 
             //ConfigureCors
             services.ConfigureCors();
@@ -46,6 +42,7 @@ namespace CompanyEmployees
             services.ConfigureRepository();
             services.ConfigureSqlContext(Configuration);
             services.AddCustomMediaTypes();
+            services.ConfigureVersioning();
 
             services.AddScoped<ValidationFilterAttribute>();
             services.AddScoped<ValidateCompanyExistsAttribute>();
@@ -64,7 +61,7 @@ namespace CompanyEmployees
 
             //accept header
 
-            services.AddControllers(config=>
+            services.AddControllers(config =>
             {
                 config.RespectBrowserAcceptHeader = true;
                 config.ReturnHttpNotAcceptable = true;
@@ -77,10 +74,10 @@ namespace CompanyEmployees
             {
                 options.SuppressModelStateInvalidFilter = true;
             });
-
         }
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,ILoggerManager logger)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerManager logger)
         {
             if (env.IsDevelopment())
             {
@@ -103,9 +100,9 @@ namespace CompanyEmployees
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name:"defaut",
-                    pattern:"{controller=Home}/{action=Index}/{id?}"
-                    );
+                     name: "defaut",
+                     pattern: "{controller=Home}/{action=Index}/{id?}"
+                     );
             });
         }
     }

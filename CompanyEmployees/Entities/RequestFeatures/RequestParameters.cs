@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Entities.RequestFeatures
+﻿namespace Entities.RequestFeatures
 {
     public class RequestParameters
     {
-        const int maxPageSize = 50;
+        private const int maxPageSize = 50;
         public int PageNumber { get; set; } = 1;
         private int _pageSize = 10;
+
         public int PageSize
         {
             get
@@ -22,9 +17,9 @@ namespace Entities.RequestFeatures
                 _pageSize = (value > maxPageSize) ? maxPageSize : value;
             }
         }
+
         public string OrderBy { set; get; }
         public string SearchTerm { set; get; }
         public string Fields { set; get; }
-
     }
 }

@@ -1,20 +1,19 @@
 ﻿using Entities.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
-using System.Linq.Dynamic.Core;
 
 namespace Repository.Extensions
 {
     public static class RepositoryEmployeeExtensions
     {
-        public static IQueryable<Employee> FilterEmployees(this IQueryable<Employee> employees,int minAge,int maxAge)
+        public static IQueryable<Employee> FilterEmployees(this IQueryable<Employee> employees, int minAge, int maxAge)
         {
-          return  employees.Where(e => e.Age > minAge && e.Age < maxAge);
+            return employees.Where(e => e.Age > minAge && e.Age < maxAge);
         }
+
         public static IQueryable<Employee> Search(this IQueryable<Employee> employees, string searchTerm)
         {
             if (string.IsNullOrWhiteSpace(searchTerm))
@@ -22,13 +21,14 @@ namespace Repository.Extensions
             var lowerCaseTerm = searchTerm.Trim().ToLower();
             return employees.Where(e => e.Name.ToLower().Contains(lowerCaseTerm));
         }
+
         public static IQueryable<Employee> Sort(this IQueryable<Employee> employees, string orderByQueryString)
         {
             if (string.IsNullOrWhiteSpace(orderByQueryString))
                 return employees.OrderBy(e => e.Name);
 
             var orderParams = orderByQueryString.Trim().Split(',');
-            var propertyInfos = typeof(Employee).GetProperties(BindingFlags.Public|BindingFlags.Instance);
+            var propertyInfos = typeof(Employee).GetProperties(BindingFlags.Public | BindingFlags.Instance);
             var orderQueryBuilder = new StringBuilder();
             foreach (var param in orderParams)
             {

@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Entities.DataTransferObjects
 {
-    public class CompanyForCreationDto:CompanyForManipulationDto
+    public class CompanyForCreationDto : CompanyForManipulationDto
     {
-        public IEnumerable<EmployeeForCreationDto> Employees{ get; set; } 
+        public IEnumerable<EmployeeForCreationDto> Employees { get; set; }
     }
 }

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Repository.Extensions.Utilty
 {
@@ -25,7 +23,7 @@ namespace Repository.Extensions.Utilty
                 if (objectProperty == null)
                     continue;
                 var direction = param.EndsWith(" desc") ? "descending" : "ascending";
-            orderQueryBuilder.Append($"{objectProperty.Name.ToString()} {direction},");
+                orderQueryBuilder.Append($"{objectProperty.Name.ToString()} {direction},");
             }
             var orderQuery = orderQueryBuilder.ToString().TrimEnd(',', ' ');
             return orderQuery;

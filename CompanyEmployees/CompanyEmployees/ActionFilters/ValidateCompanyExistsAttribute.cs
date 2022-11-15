@@ -1,11 +1,7 @@
 ﻿using Contracts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CompanyEmployees.ActionFilters
 {
@@ -22,7 +18,6 @@ namespace CompanyEmployees.ActionFilters
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
-
         }
 
         public void OnActionExecuting(ActionExecutingContext context)
@@ -31,13 +26,13 @@ namespace CompanyEmployees.ActionFilters
             var controller = context.RouteData.Values["controller"].ToString();
 
             Guid id;
-            if(controller.ToString() == "Employees")
+            if (controller.ToString() == "Employees")
             {
                 id = (Guid)context.ActionArguments["companyId"];
             }
             else
             {
-                id= (Guid)context.ActionArguments["id"];
+                id = (Guid)context.ActionArguments["id"];
             }
 
             //var id = (controller.ToString() == "Employees") ?

@@ -17,8 +17,8 @@ namespace CompanyEmployees.Extensions
                 appError.Run(async context =>
                 {
                     context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                    context.Response.ContentType = "application/json";  
-                    var contextFeatur=context.Features.Get<IExceptionHandlerFeature>();
+                    context.Response.ContentType = "application/json";
+                    var contextFeatur = context.Features.Get<IExceptionHandlerFeature>();
                     if (contextFeatur != null)
                     {
                         logger.LogError($"Something went wrong: {contextFeatur.Error}");

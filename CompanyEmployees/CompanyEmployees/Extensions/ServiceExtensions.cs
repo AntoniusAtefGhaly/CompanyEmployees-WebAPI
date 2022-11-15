@@ -1,9 +1,11 @@
-﻿using Contracts;
+﻿using CompanyEmployees.Controllers;
+using Contracts;
 using Entities;
 using LoggerService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,18 +38,21 @@ namespace CompanyEmployees.Extensions
         {
             services.AddScoped<ILoggerManager, LoggerManager>();
         }
+
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration)
         {
-         services.AddDbContext<RepositoryContext>(
-             opts => opts.UseSqlServer(configuration.GetConnectionString("sqlConnection"), b => b.MigrationsAssembly("CompanyEmployees"))
-             );
-        }
-        public static void ConfigureRepository(this IServiceCollection services)
-        {
-            services.AddScoped<IRepositoryManager,RepositoryManager>();
+            services.AddDbContext<RepositoryContext>(
+                opts => opts.UseSqlServer(configuration.GetConnectionString("sqlConnection"), b => b.MigrationsAssembly("CompanyEmployees"))
+                );
         }
 
-        public static IMvcBuilder AddCustomCSVFormatter(this IMvcBuilder builder) {
+        public static void ConfigureRepository(this IServiceCollection services)
+        {
+            services.AddScoped<IRepositoryManager, RepositoryManager>();
+        }
+
+        public static IMvcBuilder AddCustomCSVFormatter(this IMvcBuilder builder)
+        {
             return builder.AddMvcOptions(config => config.OutputFormatters.Add(new
 CsvOutputFormatter()));
         }
@@ -75,6 +80,27 @@ CsvOutputFormatter()));
             });
         }
 
+        public static void ConfigureVersioning(this IServiceCollection services) =>
+            services.AddApiVersioning(
+                opt =>
+                {
+                    opt.ReportApiVersions = true;
+                    opt.AssumeDefaultVersionWhenUnspecified = true;
+                    opt.DefaultApiVersion = new ApiVersion(1, 0);
+                    opt.ApiVersionReader = ApiVersionReader.Combine(
+                        new HeaderApiVersionReader("api-version"),
+                       new QueryStringApiVersionReader("ver", "version")
+                        );
+
+                    opt.Conventions.Controller<CompaniesController>().HasApiVersion(new ApiVersion(1, 0));
+                    opt.Conventions.Controller<CompaniesV2Controller>().HasDeprecatedApiVersion(new
+                    ApiVersion(3, 0));
+
+                    //opt.ApiVersionReader = new QueryStringApiVersionReader("api-version");
+                    //opt.ApiVersionReader = ApiVersionReader.Combine(
+                    //    new HeaderApiVersionReader("x-version", "ver"),
+                    //    new QueryStringApiVersionReader("ver", "version"));
+                });
 
         //public static void ConfigureAutoMapper (this IServiceCollection services)
         //{

@@ -7,21 +7,19 @@ using Repository.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Repository
 {
-    public class CompanyRepository: RepositoryBase<Company>,ICompanyRepository
+    public class CompanyRepository : RepositoryBase<Company>, ICompanyRepository
     {
-        public CompanyRepository(RepositoryContext repositoryContext) :base(repositoryContext)
+        public CompanyRepository(RepositoryContext repositoryContext) : base(repositoryContext)
         {
         }
 
         public void CreateCompany(Company company)
         {
-              Create(company);
+            Create(company);
         }
 
         public void CreateCompanyCollection(IEnumerable<Company> Companies)
@@ -36,9 +34,9 @@ namespace Repository
 
         public IEnumerable<Company> GetAllCompanies(bool trackChanges)
         {
-          return FindAll(trackChanges) 
-                .OrderBy(c => c.Name)
-                .ToList();
+            return FindAll(trackChanges)
+                  .OrderBy(c => c.Name)
+                  .ToList();
         }
 
         public async Task<IEnumerable<Company>> GetAllCompaniesAsync(bool trackChanges, CompanyParameters companyparamter)
@@ -68,12 +66,12 @@ namespace Repository
         public async Task<Company> GetCompanyAsync(Guid CompanyId, bool TrackChanging)
         {
             return await FindByCondition(c => c.Id.Equals(CompanyId), TrackChanging)
-                .SingleOrDefaultAsync(); 
+                .SingleOrDefaultAsync();
         }
 
         public Company GetCompanyIncludeEmployees(Guid CompanyId, bool TrackChanging)
         {
-            return GetFirstInclude(e=>e.Id==CompanyId,c=>c.Employees, TrackChanging);
+            return GetFirstInclude(e => e.Id == CompanyId, c => c.Employees, TrackChanging);
         }
     }
 }

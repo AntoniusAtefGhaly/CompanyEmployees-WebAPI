@@ -1,5 +1,4 @@
-﻿using Entities.LinkModels;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -75,7 +74,7 @@ namespace Entities.Models
             writer.WriteString(value.ToString());
             writer.WriteEndElement();
         }
-      
+
         public void Add(string key, object value)
         {
             _expando.Add(key, value);
@@ -162,6 +161,5 @@ namespace Entities.Models
         {
             return GetEnumerator();
         }
-
     }
 }

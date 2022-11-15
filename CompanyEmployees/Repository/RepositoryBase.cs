@@ -5,14 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Repository
 {
-    public abstract class RepositoryBase<T> : IRepositoryBase<T> where T :class
+    public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
         protected RepositoryContext RepositoryContext;
+
         public RepositoryBase(RepositoryContext repositoryContext)
         {
             RepositoryContext = repositoryContext;
@@ -23,11 +22,13 @@ namespace Repository
             RepositoryContext.Set<T>().Add(entity);
             //RepositoryContext.SaveChanges();
         }
+
         public void CreateCollection(IEnumerable<T> entities)
         {
             RepositoryContext.Set<T>().AddRange(entities);
             //RepositoryContext.SaveChanges();
         }
+
         public void Delete(T entity)
         {
             RepositoryContext.Set<T>().Remove(entity);
@@ -36,7 +37,7 @@ namespace Repository
 
         public IQueryable<T> FindAll(bool trackChanges)
         {
-           return !trackChanges ? RepositoryContext.Set<T>().AsNoTracking() : RepositoryContext.Set<T>();
+            return !trackChanges ? RepositoryContext.Set<T>().AsNoTracking() : RepositoryContext.Set<T>();
         }
 
         public IQueryable<T> FindByCondition(System.Linq.Expressions.Expression<Func<T, bool>> expression, bool trackChanges)
@@ -49,11 +50,13 @@ namespace Repository
             return RepositoryContext.Set<T>()
                 .Find(Id);
         }
-        public  T GetFirstInclude(Expression<Func<T, bool>> expression, Expression<Func<T, object>> includeExpression,bool trackChanges )
+
+        public T GetFirstInclude(Expression<Func<T, bool>> expression, Expression<Func<T, object>> includeExpression, bool trackChanges)
         {
             return !trackChanges ? RepositoryContext.Set<T>().Where(expression).Include(includeExpression).AsNoTracking().FirstOrDefault() :
              RepositoryContext.Set<T>().Where(expression).Include(includeExpression).AsTracking().FirstOrDefault();
         }
+
         public void Update(T entity)
         {
             RepositoryContext.Set<T>().Update(entity);

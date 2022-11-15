@@ -2,17 +2,15 @@
 using Entities.DataTransferObjects;
 using Entities.LinkModels;
 using Entities.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+
 //using System.Linq;
 //using System.Net.Http.Headers;
-using Microsoft.AspNetCore.JsonPatch;
-using Microsoft.AspNetCore.Mvc;
 using System.Net.Http.Headers;
-using System.Text.Json;
-using System.Linq;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.AspNetCore.Http;
 
 namespace CompanyEmployees.Utility
 {
@@ -20,12 +18,14 @@ namespace CompanyEmployees.Utility
     {
         private readonly LinkGenerator _linkGenerator;
         private readonly IDataShaper<EmployeeDto> _dataShaper;
+
         public EmployeeLinks(LinkGenerator linkGenerator, IDataShaper<EmployeeDto>
        dataShaper)
         {
             _linkGenerator = linkGenerator;
             _dataShaper = dataShaper;
         }
+
         public LinkResponse TryGenerateLinks(IEnumerable<EmployeeDto> employeesDto, string fields, Guid companyId, HttpContext httpContext)
         {
             var shapedEmployees = ShapeData(employeesDto, fields);
@@ -34,18 +34,21 @@ namespace CompanyEmployees.Utility
                shapedEmployees);
             return ReturnShapedEmployees(shapedEmployees);
         }
+
         private List<Entity> ShapeData(IEnumerable<EmployeeDto> employeesDto, string fields)
         {
             return _dataShaper.ShapeData(employeesDto, fields)
               .Select(e => e.Entity)
               .ToList();
         }
-        private bool ShouldGenerateLinks( HttpContext httpContext)
+
+        private bool ShouldGenerateLinks(HttpContext httpContext)
         {
             var mediaType = (MediaTypeHeaderValue)httpContext.Items["AcceptHeaderMediaType"];
 
-            return mediaType.MediaType.Contains("hateoas",StringComparison.InvariantCultureIgnoreCase);
+            return mediaType.MediaType.Contains("hateoas", StringComparison.InvariantCultureIgnoreCase);
         }
+
         private LinkResponse ReturnShapedEmployees(List<Entity> shapedEmployees) => new
         LinkResponse
         { ShapedEntities = shapedEmployees };
@@ -90,6 +93,7 @@ values: new { companyId, id, fields }),
  };
             return links;
         }
+
         private LinkCollectionWrapper<Entity> CreateLinksForEmployees(HttpContext httpContext,
         LinkCollectionWrapper<Entity> employeesWrapper)
         {

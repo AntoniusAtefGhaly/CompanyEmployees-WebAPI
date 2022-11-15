@@ -2,9 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CompanyEmployees.ActionFilters
 {
@@ -18,8 +15,9 @@ namespace CompanyEmployees.ActionFilters
             _logger = loggeer;
             _repository = repository;
         }
+
         public void OnActionExecuted(ActionExecutedContext context)
-        {}
+        { }
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
@@ -35,7 +33,7 @@ namespace CompanyEmployees.ActionFilters
 
             var trackChanges = context.HttpContext.Request.Method.Equals("PUT");
             //var id =Guid.Parse ( context.RouteData.Values["id"].ToString());
-            var employee = _repository.Employee.GetEmployee(companyId,id, trackChanges);
+            var employee = _repository.Employee.GetEmployee(companyId, id, trackChanges);
             if (employee == null)
             {
                 _logger.LogError($"{action} employee  with id: {id} doesn't exist in the database.");
@@ -45,7 +43,6 @@ namespace CompanyEmployees.ActionFilters
             {
                 context.HttpContext.Items.Add("employee", employee);
             }
-
         }
     }
 }

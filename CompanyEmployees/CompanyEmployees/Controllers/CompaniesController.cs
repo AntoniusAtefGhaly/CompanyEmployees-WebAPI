@@ -11,13 +11,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static System.Collections.Specialized.BitVector32;
 
 namespace CompanyEmployees.Controllers
 {
     [Route("api/Companies")]
+    [ApiVersion("1.0")]
     [ApiController]
-
     public class CompaniesController : ControllerBase
     {
         private readonly IRepositoryManager _repository;
@@ -33,18 +32,19 @@ namespace CompanyEmployees.Controllers
             _logger = loggerManager;
             _mapper = mapper;
         }
+
         [HttpOptions]
-        public   IActionResult GetCompaniesOptions()
+        public IActionResult GetCompaniesOptions()
         {
             Response.Headers.Add("allow", "Get,Post,Option");
             Response.Headers.Add("content-length", "0");
-            return   Ok();
+            return Ok();
         }
+
         [HttpGet]
         [HttpHead]
-        public async Task<IActionResult> GetCompanies([FromQuery]CompanyParameters companyparamter)
+        public async Task<IActionResult> GetCompanies([FromQuery] CompanyParameters companyparamter)
         {
-
             /*to test global error handler*/
             // throw new Exception("Exception");
             try
@@ -52,7 +52,7 @@ namespace CompanyEmployees.Controllers
                 var companies = await _repository.Company.GetAllCompaniesAsync(false, companyparamter);
                 _logger.LogInfo($"{nameof(GetCompanies)}==list of companies returned");
                 //var companiesDto = companies.Select(c=>
-                //    new 
+                //    new
                 //    {
                 //        Id=c.Id,
                 //        Name=c.Name,
@@ -65,7 +65,6 @@ namespace CompanyEmployees.Controllers
 
                 //var companiesDto = _mapper.Map<IEnumerable<CompanyDto>>(companies);
 
-
                 return Ok(companiesDto);
             }
             catch (Exception ex)
@@ -77,7 +76,6 @@ namespace CompanyEmployees.Controllers
 
         [HttpGet("{id}", Name = "CompanyById")]
         [HttpHead("{id}")]
-        //[HttpHead]
         public async Task<IActionResult> GetCompany(Guid id)
         {
             var company = await _repository.Company.GetCompanyAsync(id, false);
@@ -94,7 +92,7 @@ namespace CompanyEmployees.Controllers
         }
 
         [HttpPost]
-       [ServiceFilter(typeof(ValidationFilterAttribute))]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreateAsync([FromBody] CompanyForCreationDto companyDto)
         {
             //if (companyDto == null)
@@ -125,7 +123,7 @@ namespace CompanyEmployees.Controllers
                 _logger.LogError($"{nameof(GetCompanyCollection)}Parameter ids is null");
                 return BadRequest("Parameter ids is null");
             }
-            var companies =await _repository.Company.GetCompaniesByIdsAsync(ids, false);
+            var companies = await _repository.Company.GetCompaniesByIdsAsync(ids, false);
             if (companies.Count() != ids.Count())
             {
                 _logger.LogError($"{nameof(GetCompanyCollection)} some companies IDs not valid");
@@ -151,12 +149,13 @@ namespace CompanyEmployees.Controllers
             var ids = string.Join(',', companiesToReturn.Select(c => c.Id));
             return CreatedAtRoute("GetCompanyCollection", new { ids }, companiesToReturn);
         }
+
         [HttpDelete("{id}")]
         [ServiceFilter(typeof(ValidateCompanyExistsAttribute))]
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
-            var company =(Company)HttpContext.Items["company"];
-               
+            var company = (Company)HttpContext.Items["company"];
+
             //if (company == null)
             //{
             //    _logger.LogError($"{nameof(GetCompany)} Company with id: {id} doesn't exist in the database.");
@@ -166,9 +165,10 @@ namespace CompanyEmployees.Controllers
             await _repository.SaveAsync();
             return NoContent();
         }
+
         [HttpPut("{id}")]
-        [ServiceFilter(typeof(ValidationFilterAttribute),Order = 1)]
-        [ServiceFilter(typeof(ValidateCompanyExistsAttribute),Order =2)]
+        [ServiceFilter(typeof(ValidationFilterAttribute), Order = 1)]
+        [ServiceFilter(typeof(ValidateCompanyExistsAttribute), Order = 2)]
         public async Task<IActionResult> UpdateCompanyAsync([FromBody] CompanyForUpdateDto company, Guid id)
         {
             //if (company == null)
@@ -183,7 +183,6 @@ namespace CompanyEmployees.Controllers
             //    _logger.LogError($"{nameof(UpdateCompanyAsync)} Company with id = {id} doesnot exist in database");
             //    return NotFound($"Company with id = {id} doesnot exist in database");
             //}
-
 
             var companyEntity = HttpContext.Items["company"] as Company;
             _mapper.Map(company, companyEntity);

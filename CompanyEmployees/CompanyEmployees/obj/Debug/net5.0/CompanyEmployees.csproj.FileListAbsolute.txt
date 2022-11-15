@@ -155,3 +155,5 @@ F:\1.NET\ASP.NET\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\n
 D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\System.Linq.Dynamic.Core.dll
 >>>>>>> 0d233f307b026a3d73ab49f54280dd627cfb7436
 F:\1.NET\ASP.NET\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\System.Linq.Dynamic.Core.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Versioning.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\obj\Debug\net5.0\CompanyEmployees.MvcApplicationPartsAssemblyInfo.cs
