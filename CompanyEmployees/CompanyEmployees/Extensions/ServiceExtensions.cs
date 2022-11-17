@@ -1,4 +1,5 @@
-﻿using CompanyEmployees.Controllers;
+﻿using AspNetCoreRateLimit;
+using CompanyEmployees.Controllers;
 using Contracts;
 using Entities;
 using LoggerService;
@@ -11,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Repository;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CompanyEmployees.Extensions
@@ -120,6 +122,28 @@ CsvOutputFormatter()));
                  {
                      validationOpt.MustRevalidate = true;
                  });
+        }
+
+        public static void ConfigureRateLimitingOptions(this IServiceCollection services)
+        {
+            var rateLimitRules = new List<RateLimitRule>
+             {
+             new RateLimitRule
+             {
+             Endpoint = "*",
+             Limit= 300,
+             Period = "5m"
+             }
+             };
+
+            services.Configure<IpRateLimitOptions>(opt =>
+            {
+                opt.GeneralRules = rateLimitRules;
+            });
+
+            services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
+            services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
+            //services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
         }
 
         //public static void ConfigureAutoMapper (this IServiceCollection services)

@@ -1,3 +1,4 @@
+using AspNetCoreRateLimit;
 using CompanyEmployees.ActionFilters;
 using CompanyEmployees.Extensions;
 using CompanyEmployees.Utility;
@@ -37,6 +38,7 @@ namespace CompanyEmployees
 
             //ConfigureCors
             services.ConfigureCors();
+            services.AddMemoryCache();
             services.ConfigureIISIntegration();
             services.ConfigureLoggerService();
             services.AddControllers();
@@ -46,6 +48,8 @@ namespace CompanyEmployees
             services.ConfigureVersioning();
             services.ConfigureResponseCaching();
             services.ConfigureHttpCacheHeaders();
+            services.ConfigureRateLimitingOptions();
+            services.AddHttpContextAccessor();
 
             services.AddScoped<ValidationFilterAttribute>();
             services.AddScoped<ValidateCompanyExistsAttribute>();
@@ -102,9 +106,11 @@ namespace CompanyEmployees
             app.UseStaticFiles();
             app.UseCors("CorsPolicy");
             app.UseForwardedHeaders(new ForwardedHeadersOptions { ForwardedHeaders = ForwardedHeaders.All });
+            //app.UseIpRateLimiting();
 
             app.UseResponseCaching();
             app.UseHttpCacheHeaders();
+            app.UseIpRateLimiting();
             app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>

@@ -82,7 +82,7 @@ namespace CompanyEmployees.Controllers
         [HttpHead("{id}")]
         //[ResponseCache(Duration = 60)]
         [HttpCacheExpiration(CacheLocation = CacheLocation.Public, MaxAge = 60)]
-        [HttpCacheValidation(MustRevalidate = false)]
+        [HttpCacheValidation(MustRevalidate = true)]
         public async Task<IActionResult> GetCompany(Guid id)
         {
             var company = await _repository.Company.GetCompanyAsync(id, false);
@@ -176,6 +176,8 @@ namespace CompanyEmployees.Controllers
         [HttpPut("{id}")]
         [ServiceFilter(typeof(ValidationFilterAttribute), Order = 1)]
         [ServiceFilter(typeof(ValidateCompanyExistsAttribute), Order = 2)]
+        [HttpCacheExpiration(CacheLocation = CacheLocation.Public, MaxAge = 60)]
+        [HttpCacheValidation(MustRevalidate = true)]
         public async Task<IActionResult> UpdateCompanyAsync([FromBody] CompanyForUpdateDto company, Guid id)
         {
             //if (company == null)

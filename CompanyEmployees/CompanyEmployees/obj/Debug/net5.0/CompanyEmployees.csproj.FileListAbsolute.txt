@@ -158,3 +158,12 @@ F:\1.NET\ASP.NET\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\n
 D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Versioning.dll
 D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\obj\Debug\net5.0\CompanyEmployees.MvcApplicationPartsAssemblyInfo.cs
 D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Marvin.Cache.Headers.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\AspNetCoreRateLimit.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\web.config
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Razor.Host.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Microsoft.CodeAnalysis.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Microsoft.DotNet.InternalAbstractions.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Microsoft.Extensions.Globalization.CultureInfoCache.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Microsoft.Extensions.PlatformAbstractions.dll

@@ -2,6 +2,10 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/CompanyEmployees",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:37735",
       "sslPort": 44356
@@ -15,7 +19,6 @@
     },
     "IIS": {
       "commandName": "Project",
-      "launchBrowser": true,
       "sqlDebugging": true,
       "nativeDebugging": true,
       "applicationUrl": "https://localhost:44356"
