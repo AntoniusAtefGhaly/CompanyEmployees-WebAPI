@@ -157,3 +157,4 @@ D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\
 F:\1.NET\ASP.NET\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\System.Linq.Dynamic.Core.dll
 D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Versioning.dll
 D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\obj\Debug\net5.0\CompanyEmployees.MvcApplicationPartsAssemblyInfo.cs
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Marvin.Cache.Headers.dll

@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json.schemastore.org/launchsettings.json",
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
@@ -8,14 +7,18 @@
       "sslPort": 44356
     }
   },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
     "WSL": {
       "commandName": "WSL2",
       "distributionName": ""
     },
     "IIS": {
-      "commandName": "IISExpress",
-      "launchBrowser": true
+      "commandName": "Project",
+      "launchBrowser": true,
+      "sqlDebugging": true,
+      "nativeDebugging": true,
+      "applicationUrl": "https://localhost:44356"
     }
   }
 }

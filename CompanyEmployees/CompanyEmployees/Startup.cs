@@ -6,6 +6,7 @@ using Entities.DataTransferObjects;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -43,6 +44,8 @@ namespace CompanyEmployees
             services.ConfigureSqlContext(Configuration);
             services.AddCustomMediaTypes();
             services.ConfigureVersioning();
+            services.ConfigureResponseCaching();
+            services.ConfigureHttpCacheHeaders();
 
             services.AddScoped<ValidationFilterAttribute>();
             services.AddScoped<ValidateCompanyExistsAttribute>();
@@ -65,6 +68,11 @@ namespace CompanyEmployees
             {
                 config.RespectBrowserAcceptHeader = true;
                 config.ReturnHttpNotAcceptable = true;
+                config.CacheProfiles.Add("120second",
+                    new CacheProfile
+                    {
+                        Duration = 120
+                    });
             }
             ).AddNewtonsoftJson()
 .AddXmlDataContractSerializerFormatters()
@@ -95,6 +103,8 @@ namespace CompanyEmployees
             app.UseCors("CorsPolicy");
             app.UseForwardedHeaders(new ForwardedHeadersOptions { ForwardedHeaders = ForwardedHeaders.All });
 
+            app.UseResponseCaching();
+            app.UseHttpCacheHeaders();
             app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
