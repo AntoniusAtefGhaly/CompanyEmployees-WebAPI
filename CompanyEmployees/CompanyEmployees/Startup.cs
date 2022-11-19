@@ -50,6 +50,8 @@ namespace CompanyEmployees
             services.ConfigureHttpCacheHeaders();
             services.ConfigureRateLimitingOptions();
             services.AddHttpContextAccessor();
+            services.ConfigureIdentity();
+            services.AddAuthentication();
 
             services.AddScoped<ValidationFilterAttribute>();
             services.AddScoped<ValidateCompanyExistsAttribute>();
@@ -112,7 +114,9 @@ namespace CompanyEmployees
             app.UseHttpCacheHeaders();
             app.UseIpRateLimiting();
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
