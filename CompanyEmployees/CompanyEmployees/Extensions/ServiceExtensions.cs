@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 using Repository;
 using System.Collections.Generic;
 using System.Linq;
@@ -144,6 +145,17 @@ CsvOutputFormatter()));
             services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
             services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
             //services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+        }
+
+        public static void ConfigureeSwagger(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(
+                s =>
+                {
+                    s.SwaggerDoc("v1", new OpenApiInfo { Title = "Code Maze API", Version = "v1" });
+                    s.SwaggerDoc("v2", new OpenApiInfo { Title = "Code Maze API", Version = "v2" });
+                }
+                );
         }
 
         //public static void ConfigureAutoMapper (this IServiceCollection services)

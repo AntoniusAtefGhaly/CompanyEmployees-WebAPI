@@ -18,7 +18,9 @@
       "distributionName": ""
     },
     "IIS": {
-      "commandName": "Project",
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
       "sqlDebugging": true,
       "nativeDebugging": true,
       "applicationUrl": "https://localhost:44356"

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 namespace CompanyEmployees.Controllers
 {
     [ApiVersion("2.0", Deprecated = true)]
+    [ApiExplorerSettings(GroupName = "v2")]
+
     //[Route("api/{v:apiversion}/companies")]  //for url versioning
     [Route("api/companies")]
     [ApiController]

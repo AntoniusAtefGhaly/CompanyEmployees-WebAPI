@@ -167,3 +167,7 @@ D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\
 D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
 D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Microsoft.Extensions.Globalization.CultureInfoCache.dll
 D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Microsoft.Extensions.PlatformAbstractions.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Microsoft.OpenApi.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll

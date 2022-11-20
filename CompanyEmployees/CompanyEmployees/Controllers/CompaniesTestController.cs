@@ -11,6 +11,7 @@ namespace CompanyEmployees.Controllers
 {
     [Route("api/test/companies")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v2")]
     public class CompaniesTestController : ControllerBase
     {
         private readonly IRepositoryManager _repository;

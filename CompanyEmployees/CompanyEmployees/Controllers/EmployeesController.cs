@@ -14,6 +14,7 @@ using System.Collections.Generic;
 
 namespace CompanyEmployees.Controllers
 {
+    [ApiExplorerSettings(GroupName = "v1")]
     [Route("api/Companies/{companyId}/Employees")]
     [ApiController]
     [ServiceFilter(typeof(ValidateCompanyExistsAttribute))]
