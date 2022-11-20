@@ -23,6 +23,7 @@ namespace Entities.DataTransferObjects
             CreateMap<EmployeeForCreationDto, Employee>().ForMember(e => e.Id, opt => opt.MapFrom(x => System.Guid.NewGuid().ToString()));
             CreateMap<EmployeeForUpdateDto, Employee>().ReverseMap();
             CreateMap<CompanyForUpdateDto, Company>();
+            CreateMap<UserForRegistrationDto, User>().ReverseMap();
         }
     }
 }
