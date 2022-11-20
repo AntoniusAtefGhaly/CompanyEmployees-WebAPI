@@ -5,6 +5,7 @@ using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
 using Entities.RequestFeatures;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +19,7 @@ namespace CompanyEmployees.Controllers
     [Route("api/Companies/{companyId}/Employees")]
     [ApiController]
     [ServiceFilter(typeof(ValidateCompanyExistsAttribute))]
+    [Authorize(Roles = "Administrator")]
     public class EmployeesController : ControllerBase
     {
         private readonly IMapper _mapper;

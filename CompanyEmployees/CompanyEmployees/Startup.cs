@@ -53,13 +53,15 @@ namespace CompanyEmployees
             services.ConfigureIdentity();
             services.AddAuthentication();
             services.ConfigureeSwagger();
-
+            services.ConfigureJWT(Configuration);
             services.AddScoped<ValidationFilterAttribute>();
             services.AddScoped<ValidateCompanyExistsAttribute>();
             services.AddScoped<ValidateEmployeeCompanyExistsFilter>();
             services.AddScoped<ValidateMediaTypeAttribute>();
 
             services.AddScoped<IDataShaper<EmployeeDto>, DataShaper<EmployeeDto>>();
+            services.AddScoped<IAuthenticationManager, AuthenticationManager>();
+
             services.AddScoped<EmployeeLinks, EmployeeLinks>();
 
             // services.AddAutoMapper(typeof(MappingProfile));
