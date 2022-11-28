@@ -1,0 +1,17 @@
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\bin\Release\net5.0\Repository.deps.json
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\bin\Release\net5.0\Repository.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\bin\Release\net5.0\ref\Repository.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\bin\Release\net5.0\Repository.pdb
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\bin\Release\net5.0\Contracts.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\bin\Release\net5.0\Entities.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\bin\Release\net5.0\Contracts.pdb
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\bin\Release\net5.0\Entities.pdb
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\obj\Release\net5.0\Repository.csproj.AssemblyReference.cache
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\obj\Release\net5.0\Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\obj\Release\net5.0\Repository.AssemblyInfoInputs.cache
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\obj\Release\net5.0\Repository.AssemblyInfo.cs
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\obj\Release\net5.0\Repository.csproj.CoreCompileInputs.cache
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\obj\Release\net5.0\Repository.csproj.CopyComplete
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\obj\Release\net5.0\Repository.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\obj\Release\net5.0\ref\Repository.dll
+D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\Repository\obj\Release\net5.0\Repository.pdb

@@ -20,7 +20,9 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace CompanyEmployees.Extensions
@@ -159,8 +161,29 @@ CsvOutputFormatter()));
             services.AddSwaggerGen(
                 s =>
                 {
-                    s.SwaggerDoc("v1", new OpenApiInfo { Title = "Code Maze API", Version = "v1" });
+                    s.SwaggerDoc("v1", new OpenApiInfo
+                    {
+                        Title = "Code Maze API",
+                        Version = "v1",
+                        Description = "CompanyEmployees API",
+                        TermsOfService = new Uri("https://github.com/AntoniusAtefGhaly"),
+                        Contact = new OpenApiContact
+                        {
+                            Name = "antonius atef",
+                            Email = "antonius.a.ghaly@gmail.com",
+                            Url = new Uri("https://github.com/AntoniusAtefGhaly")
+                        },
+                        License = new OpenApiLicense
+                        {
+                            Name = "CompanyEmployees API",
+                            Url = new Uri("https://github.com/AntoniusAtefGhaly")
+                        }
+                    });
                     s.SwaggerDoc("v2", new OpenApiInfo { Title = "Code Maze API", Version = "v2" });
+                    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+                    //s.IncludeXmlComments(xmlPath);
 
                     s.AddSecurityDefinition("Bearer",
                         new OpenApiSecurityScheme

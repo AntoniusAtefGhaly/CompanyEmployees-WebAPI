@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\training\study\ASP_NETCoreWebAPI\CompanyEmployees\CompanyEmployees\publish\</_PublishTargetUrl>
+    <History>True|2022-11-28T09:02:09.7854984Z;False|2022-11-28T11:01:44.1983061+02:00;True|2022-11-28T10:19:05.2321683+02:00;True|2022-11-28T09:46:46.0143670+02:00;</History>
+  </PropertyGroup>
+</Project>

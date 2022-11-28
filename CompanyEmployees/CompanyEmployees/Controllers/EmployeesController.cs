@@ -37,6 +37,12 @@ namespace CompanyEmployees.Controllers
             _employeeLinks = employeeLinks;
         }
 
+        /// <summary>
+        /// Gets the list of all employees for a company
+        /// </summary>
+        /// <param name="companyId"></param>
+        /// <param name="employeeParameters"></param>
+        /// <returns></returns>
         [HttpGet]
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
         [HttpHead]
@@ -64,6 +70,12 @@ namespace CompanyEmployees.Controllers
             //return links.HasLinks ? Ok(links.LinkedEntities) : Ok(links.ShapedEntities);
         }
 
+        /// <summary>
+        /// get employee
+        /// </summary>
+        /// <param name="companyId"></param>
+        /// <param name="employeeId"></param>
+        /// <returns></returns>
         [HttpHead("{employeeId}")]
         [HttpGet("{employeeId}", Name = "EmployeeById")]
         public IActionResult GetEmployee(Guid companyId, Guid employeeId)
@@ -89,6 +101,12 @@ namespace CompanyEmployees.Controllers
             return Ok(employyDto);
         }
 
+        /// <summary>
+        /// Create employee
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <param name="companyId"></param>
+        /// <returns></returns>
         [HttpPost]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public IActionResult Create([FromBody] EmployeeForCreationDto employee, Guid companyId)
@@ -128,6 +146,12 @@ namespace CompanyEmployees.Controllers
             }, returnEmployee);
         }
 
+        /// <summary>
+        /// delete employee
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="companyId"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         [ServiceFilter(typeof(ValidateEmployeeCompanyExistsFilter))]
         public IActionResult Delete(Guid id, Guid companyId)
@@ -155,6 +179,12 @@ namespace CompanyEmployees.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// create employee collection
+        /// </summary>
+        /// <param name="employees"></param>
+        /// <param name="companyId"></param>
+        /// <returns></returns>
         [HttpPost("collection")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         public IActionResult CreateEmployeeCollection([FromBody] IEnumerable<EmployeeForCreationDto> employees, Guid companyId)

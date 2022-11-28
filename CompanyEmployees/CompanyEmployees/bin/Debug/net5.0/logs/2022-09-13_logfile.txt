@@ -1,3 +1,0 @@
-2022-09-13 11:55:23.0559 INFO === GetCompanies==list of companies returned
-2022-09-13 11:56:12.6466 INFO === GetCompanies==list of companies returned
-2022-09-13 14:27:52.1618 INFO === GetCompanies==list of companies returned
